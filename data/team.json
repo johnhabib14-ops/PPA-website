@@ -1,0 +1,39 @@
+{
+  "team": [
+    {
+      "id": "lead-1",
+      "category": "lead",
+      "name": "Head Doctor Name, PhD, ABPP-CN",
+      "title": "Director, Neuropsychology",
+      "bio": "Board-certified neuropsychologist leading Pacific Psychological Associates. Replace this text with an approved professional biography."
+    },
+    {
+      "id": "psych-1",
+      "category": "psychologist",
+      "name": "Staff Psychologist Name, PsyD",
+      "title": "Licensed Psychologist",
+      "bio": "Brief bio pending. Update in data/team.json."
+    },
+    {
+      "id": "psych-2",
+      "category": "psychologist",
+      "name": "Staff Psychologist Name, PhD",
+      "title": "Licensed Psychologist",
+      "bio": "Brief bio pending. Update in data/team.json."
+    },
+    {
+      "id": "ce-1",
+      "category": "clinical_extern",
+      "name": "Clinical Psychology Extern",
+      "title": "Clinical Psychology Extern",
+      "bio": "Training focus and supervisor information can be added here when approved for public listing."
+    },
+    {
+      "id": "ne-1",
+      "category": "neuropsych_extern",
+      "name": "Neuropsychology Extern",
+      "title": "Neuropsychology Extern",
+      "bio": "Training focus and supervisor information can be added here when approved for public listing."
+    }
+  ]
+}

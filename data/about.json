@@ -1,0 +1,15 @@
+{
+  "lead": {
+    "name": "Clinical Director Name, PhD, ABPP-CN",
+    "photoAlt": "Portrait of the practice clinical director (replace with approved photo and alt text).",
+    "credentials": "Board-certified in clinical neuropsychology (ABPP-CN); California licensed psychologist.",
+    "intro": "Replace this paragraph with an approved biography that highlights training, scope of practice, and years of experience relevant to assessment and therapy.",
+    "approach": "We emphasize clear communication, careful differential diagnosis when assessment is indicated, and collaborative treatment planning when therapy is the right fit. Clinical decisions are individualized and informed by current research and professional standards.",
+    "specialties": [
+      "Adult and older adult neuropsychological evaluation",
+      "ADHD and autism spectrum diagnostic clarification",
+      "Psychotherapy for anxiety, mood, and adjustment concerns",
+      "Consultation with medical providers, schools, and referring therapists"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "lastUpdated": "2026-05-12",
+  "intro": "We accept a range of insurance plans for therapy services. Coverage varies by plan and employer; our office can help you understand your benefits.",
+  "therapyPayers": [
+    "Aetna",
+    "Anthem Blue Cross of California",
+    "Blue Shield of California / Magellan",
+    "Cigna",
+    "Health Net / MHN",
+    "UnitedHealthcare / Optum",
+    "Medicare (when applicable—ask the office)",
+    "Out-of-network / superbill (ask the office)"
+  ],
+  "disclaimer": "This list is for general information only and may change. Please call our office to confirm that we are in-network for your specific plan and to verify copays, deductibles, and prior authorization requirements.",
+  "notListed": "If your plan is not listed, contact us—options may still be available."
+}
