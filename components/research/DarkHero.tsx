@@ -8,11 +8,13 @@ type DarkHeroProps = {
   intro?: string;
   quote?: string;
   actions?: ReactNode;
+  /** Taller hero for the main project landing (matches standalone min-height). */
+  tall?: boolean;
 };
 
-export function DarkHero({ eyebrow, title, titleId, subtitle, intro, quote, actions }: DarkHeroProps) {
+export function DarkHero({ eyebrow, title, titleId, subtitle, intro, quote, actions, tall }: DarkHeroProps) {
   return (
-    <section className="dark-hero" aria-labelledby={titleId}>
+    <section className={`dark-hero${tall ? " dark-hero--tall" : ""}`} aria-labelledby={titleId}>
       <div className="dark-hero__grid" aria-hidden="true">
         <svg width="100%" height="100%">
           <defs>

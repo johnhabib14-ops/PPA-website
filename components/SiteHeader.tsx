@@ -93,7 +93,7 @@ export function SiteHeader() {
             Schedule consultation
           </Link>
           <Link
-            className="button button--outline nav-cta nav-cta--mobile"
+            className="button button--ghost-light nav-cta nav-cta--mobile"
             href={CONTACT_HREF}
             prefetch
             aria-label="Contact our office"
@@ -143,7 +143,7 @@ export function SiteHeader() {
           >
             Schedule consultation
           </Link>
-          <Link className="button button--outline" href={CONTACT_HREF} prefetch onClick={closeMenu}>
+          <Link className="button button--ghost-light" href={CONTACT_HREF} prefetch onClick={closeMenu}>
             Contact
           </Link>
         </div>

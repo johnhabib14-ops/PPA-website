@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { DarkHero } from "@/components/research/DarkHero";
 import { ResearchSection } from "@/components/research/ResearchSection";
 import { GraphPlaceholderCard } from "@/components/research/GraphPlaceholderCard";
@@ -49,6 +48,7 @@ export default function MaternalAdvocacyProjectPage() {
   return (
     <>
       <DarkHero
+        tall
         titleId="map-hero-heading"
         eyebrow={maternalAdvocacyProject.eyebrow}
         title={maternalAdvocacyProject.title}
@@ -60,9 +60,9 @@ export default function MaternalAdvocacyProjectPage() {
             <a className="button button--accent" href="#our-study">
               Explore the study
             </a>
-            <Link className="button button--ghost-light" href="/research">
-              Back to Research
-            </Link>
+            <a className="button button--ghost-light" href="#findings">
+              View findings
+            </a>
           </>
         }
       />

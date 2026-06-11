@@ -584,9 +584,9 @@ a:hover {
     -webkit-overflow-scrolling: touch;
     padding: var(--space-lg) var(--space-md);
     padding-bottom: var(--space-2xl);
-    background: var(--color-surface);
-    box-shadow: 0 12px 48px rgba(28, 42, 56, 0.18);
-    border-top: 1px solid var(--color-border);
+    background: var(--color-navy-900);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+    border-top: 1px solid rgba(244, 242, 236, 0.1);
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
   }
@@ -634,17 +634,18 @@ a:hover {
   font-weight: 600;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
-  color: var(--color-heading);
+  color: var(--color-on-dark-muted);
 }
 
 .nav-mobile a:hover {
-  background: var(--color-accent-wash);
+  background: rgba(244, 242, 236, 0.08);
+  color: #fff;
 }
 
 .nav-mobile a[aria-current="page"] {
-  border-color: var(--color-border);
-  background: var(--color-accent-soft);
-  color: var(--color-heading);
+  border-color: rgba(244, 242, 236, 0.12);
+  background: rgba(244, 242, 236, 0.06);
+  color: #fff;
 }
 
 /* Buttons */
@@ -1704,6 +1705,19 @@ a:hover {
   padding: clamp(3.5rem, 8vw, 6rem) var(--space-lg);
 }
 
+.dark-hero--tall .dark-hero__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: min(88vh, 52rem);
+  padding-top: clamp(4rem, 10vw, 7rem);
+  padding-bottom: clamp(4rem, 10vw, 7rem);
+}
+
+.dark-hero--tall .dark-hero__title {
+  max-width: 18ch;
+}
+
 .dark-hero .eyebrow {
   color: var(--color-accent-light);
 }
@@ -2426,14 +2440,6 @@ a:hover {
   gap: var(--space-lg);
 }
 
-@media (max-width: 859.98px) {
-  .project-nav__inner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-sm);
-  }
-}
-
 .project-nav__brand {
   display: flex;
   flex-direction: column;
@@ -2471,6 +2477,20 @@ a:hover {
   min-width: 0;
 }
 
+.project-nav__links--desktop {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .project-nav__links--desktop {
+    display: block;
+  }
+
+  .project-nav__toggle {
+    display: none !important;
+  }
+}
+
 .project-nav__links ul {
   display: flex;
   align-items: center;
@@ -2478,9 +2498,6 @@ a:hover {
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  -webkit-overflow-scrolling: touch;
 }
 
 .project-nav__links a {
@@ -2498,6 +2515,85 @@ a:hover {
 .project-nav__links a:hover {
   background: rgba(244, 242, 236, 0.08);
   color: #fff;
+}
+
+.project-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-min);
+  min-height: 2.5rem;
+  padding: 0 var(--space-md);
+  border: 2px solid rgba(244, 242, 236, 0.28);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--color-on-dark);
+  margin-left: auto;
+}
+
+.project-nav__toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-light);
+}
+
+.project-nav__panel[hidden] {
+  display: none !important;
+}
+
+.project-nav__panel:not([hidden]) {
+  border-top: 1px solid rgba(244, 242, 236, 0.1);
+  background: var(--color-navy-900);
+  padding: var(--space-md) var(--space-lg) var(--space-xl);
+  max-height: min(70vh, calc(100dvh - 8rem));
+  overflow-y: auto;
+}
+
+.project-nav__mobile {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.project-nav__mobile a {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-on-dark-muted);
+}
+
+.project-nav__mobile a:hover {
+  background: rgba(244, 242, 236, 0.08);
+  color: #fff;
+}
+
+@media (max-width: 859.98px) {
+  .project-nav__inner {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .project-nav__brand {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .project-nav__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .project-footer {
