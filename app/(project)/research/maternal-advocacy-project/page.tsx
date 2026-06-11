@@ -4,6 +4,8 @@ import { ResearchSection } from "@/components/research/ResearchSection";
 import { GraphPlaceholderCard } from "@/components/research/GraphPlaceholderCard";
 import { ResearchTeamCard } from "@/components/research/ResearchTeamCard";
 import { MediaResourceCard } from "@/components/research/MediaResourceCard";
+import { ResearchPhotoGallery } from "@/components/research/ResearchPhotoGallery";
+import { ResearchResourceLinks } from "@/components/research/ResearchResourceLinks";
 import {
   maternalAdvocacyProject,
   overview,
@@ -106,8 +108,15 @@ export default function MaternalAdvocacyProjectPage() {
               {group.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
+              {group.resourceLinks?.length ? (
+                <ResearchResourceLinks links={group.resourceLinks} />
+              ) : null}
             </div>
-            <PlaceholderFigure label={group.placeholderLabel} note={group.placeholderNote} />
+            {group.photos?.length ? (
+              <ResearchPhotoGallery photos={group.photos} />
+            ) : group.placeholderLabel && group.placeholderNote ? (
+              <PlaceholderFigure label={group.placeholderLabel} note={group.placeholderNote} />
+            ) : null}
           </div>
         </ResearchSection>
       ))}

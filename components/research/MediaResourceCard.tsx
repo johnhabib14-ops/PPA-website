@@ -41,6 +41,8 @@ const icons: Record<string, ReactElement> = {
 };
 
 export function MediaResourceCard({ resource }: { resource: MediaResource }) {
+  const isAvailable = resource.url && resource.status !== "coming_soon";
+
   return (
     <article className="card">
       <span className="media-card__icon" aria-hidden="true">
@@ -50,7 +52,19 @@ export function MediaResourceCard({ resource }: { resource: MediaResource }) {
       </span>
       <h3 className="card-title">{resource.title}</h3>
       <p className="card-bio">{resource.description}</p>
-      <span className="media-card__status">Coming soon</span>
+      {isAvailable ? (
+        <a
+          className="media-card__link"
+          href={resource.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View resource
+          <span className="sr-only"> (opens in new tab): {resource.title}</span>
+        </a>
+      ) : (
+        <span className="media-card__status">Coming soon</span>
+      )}
     </article>
   );
 }

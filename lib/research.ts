@@ -84,15 +84,32 @@ export const overview = {
   ],
 };
 
+export type ResearchResourceLink = {
+  title: string;
+  url: string;
+  source: string;
+  summary: string;
+};
+
+export type ResearchPhoto = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
 export type ResearchGroup = {
   id: string;
   eyebrow: string;
   title: string;
   intro: string;
   paragraphs: string[];
-  placeholderLabel: string;
-  placeholderNote: string;
+  photos?: ResearchPhoto[];
+  resourceLinks?: ResearchResourceLink[];
+  placeholderLabel?: string;
+  placeholderNote?: string;
 };
+
+const MADRES_PHOTO_BASE = "/images/research/madres-plaza-de-mayo-50th";
 
 export const researchGroups: ResearchGroup[] = [
   {
@@ -104,11 +121,53 @@ export const researchGroups: ResearchGroup[] = [
     paragraphs: [
       "The Madres de Plaza de Mayo are an association of Argentine mothers who came together to seek information about their children who were forcibly disappeared during the period of military dictatorship. Gathering publicly, they transformed private grief into sustained, visible advocacy.",
       "Their weekly presence in the Plaza de Mayo became an enduring act of remembrance and public testimony. Through peaceful assembly and persistent demands for truth, they advanced the cause of accountability and resisted authoritarian violence.",
+      "Public commemorations in Buenos Aires have continued this tradition of visible remembrance. Gatherings bring together participants holding placards, banners, and symbolic figures representing the disappeared—sustaining a decades-long demand for truth, memory, and accountability.",
       "This section emphasizes advocacy, remembrance, public testimony, and resistance. It is presented factually and respectfully, with attention to the dignity of the families involved.",
     ],
-    placeholderLabel: "Image, quote, or historical timeline",
-    placeholderNote:
-      "Placeholder for a representative image, an attributed quotation, or a historical timeline to be added later.",
+    photos: [
+      {
+        src: `${MADRES_PHOTO_BASE}/commemoration-crowd-plaza-01.png`,
+        alt: "Large crowd gathered at an outdoor commemoration in Buenos Aires, with participants holding white cutout figures.",
+        caption:
+          "Participants at a public commemoration holding symbolic figures representing disappeared persons.",
+      },
+      {
+        src: `${MADRES_PHOTO_BASE}/march-avenida-de-mayo-02.png`,
+        alt: "March along a wide avenue in Buenos Aires, with a domed building visible in the background and participants carrying banners.",
+        caption: "March along Avenida de Mayo during a public remembrance gathering.",
+      },
+      {
+        src: `${MADRES_PHOTO_BASE}/thirty-thousand-cutouts-03.png`,
+        alt: "Crowd at a commemoration holding white cutout figures and a banner reading 30,000.",
+        caption:
+          "Participants holding symbolic figures; a banner references the widely cited estimate of 30,000 disappeared persons.",
+      },
+      {
+        src: `${MADRES_PHOTO_BASE}/demonstration-banners-04.png`,
+        alt: "Demonstration with participants carrying organizational banners along a city street.",
+        caption: "Demonstration with organizational banners during a public gathering.",
+      },
+      {
+        src: `${MADRES_PHOTO_BASE}/plaza-gathering-05.png`,
+        alt: "Gathering on a narrow city street lined with ornate historic buildings, with participants holding signs.",
+        caption: "Street gathering during commemorative events in Buenos Aires.",
+      },
+      {
+        src: `${MADRES_PHOTO_BASE}/detenido-desaparecido-placard-06.png`,
+        alt: "Participant holding a placard with a photograph and the text detenido desaparecido for Jorge Oscar Tanco.",
+        caption:
+          "Placard bearing the name and photograph of a disappeared person, illustrating individualized remembrance.",
+      },
+    ],
+    resourceLinks: [
+      {
+        title: "Argentina, 1985",
+        url: "https://en.wikipedia.org/wiki/Argentina,_1985",
+        source: "Wikipedia",
+        summary:
+          "Argentina, 1985 is a 2022 legal drama depicting the 1985 Trial of the Juntas, in which prosecutors sought accountability for crimes committed during Argentina's military dictatorship, including torture, extrajudicial murder, and forced disappearances. The film portrays the work of the prosecution team and witnesses who testified about junta-era violence. It has been widely discussed as a work of public memory that connects contemporary audiences to the Madres' long-standing demands for truth and justice—distinct from, but related to, the lived testimony of affected families.",
+      },
+    ],
   },
   {
     id: "october7",
@@ -133,12 +192,19 @@ export const researchGroups: ResearchGroup[] = [
       "Mothers affected by war, displacement, child abduction, family separation, and political violence.",
     paragraphs: [
       "This section focuses on Ukrainian mothers affected by war, displacement, child abduction, family separation, and political violence. It documents how mothers advocate for the recognition, protection, and return of their children and families.",
-      "The emphasis is on maternal advocacy, trauma, and resilience, alongside appeals for recognition, protection, and justice. We present this material with respect for the experiences of those affected.",
-      "As the project develops, this section will incorporate additional content, media, and data.",
+      "Media reporting and advocacy interviews have described the unlawful transfer and abduction of Ukrainian children amid ongoing conflict, including efforts by parents to locate and retrieve children across occupied territory. These accounts emphasize identity erasure, family separation, and the psychological toll on parents and children alike.",
+      "The emphasis remains on maternal advocacy, trauma, and resilience, alongside appeals for recognition, protection, and justice. Figures cited in public reporting—including estimates of thousands of children identified by Ukrainian authorities—are reported estimates from advocacy and official sources, not verified research data from this project.",
+      "We present this material with respect for those affected and as context for understanding contemporary maternal advocacy under conditions of political violence.",
     ],
-    placeholderLabel: "Future content, media, or data",
-    placeholderNote:
-      "Placeholder for future content, media, or data to be added as the project develops.",
+    resourceLinks: [
+      {
+        title: "They're stealing the children. Ukraine is fighting back.",
+        url: "https://www.sexyboomershow.com/theyre-stealing-the-children-ukraine-is-fighting-back/",
+        source: "Phil and Ted's Sexy Boomer Show (May 16, 2026)",
+        summary:
+          "This podcast episode features an interview with Dr. Olga Popel of the Holodomor Genocide Committee, discussing reported child abduction and forced transfer amid the war in Ukraine. Themes include parental retrieval efforts, historical context of mass violence against Ukrainian families, identity erasure, and international humanitarian concern. The episode presents advocacy perspectives and reported figures; they are included here as a media resource, not as confirmed research findings.",
+      },
+    ],
   },
 ];
 
@@ -263,6 +329,8 @@ export type MediaResource = {
   title: string;
   description: string;
   type: string;
+  url?: string;
+  status?: "available" | "coming_soon";
 };
 
 export const media = {
@@ -277,30 +345,37 @@ export const media = {
       description:
         "Scholarly articles, essays, and written analyses related to maternal advocacy and political violence.",
       type: "Articles",
+      status: "coming_soon",
     },
     {
-      title: "Videos",
+      title: "Argentina, 1985 (film)",
       description:
-        "Recorded talks, documentaries, and visual materials, selected with care for the subject matter.",
+        "A 2022 legal drama about the 1985 Trial of the Juntas and prosecution of Argentina's military dictatorship for torture, extrajudicial murder, and forced disappearances.",
       type: "Videos",
+      url: "https://en.wikipedia.org/wiki/Argentina,_1985",
+      status: "available",
     },
     {
-      title: "Interviews",
+      title: "They're stealing the children. Ukraine is fighting back.",
       description:
-        "Interview excerpts and testimony, presented in a trauma-informed and respectful manner.",
+        "Podcast interview on reported child abduction and forced transfer in Ukraine, parental advocacy, and international humanitarian concern.",
       type: "Interviews",
+      url: "https://www.sexyboomershow.com/theyre-stealing-the-children-ukraine-is-fighting-back/",
+      status: "available",
     },
     {
       title: "Reports",
       description:
         "Research reports, summaries, and documentation produced by the project and partners.",
       type: "Reports",
+      status: "coming_soon",
     },
     {
       title: "Downloadable Resources",
       description:
         "Briefs, citations, and materials available for download by researchers and the public.",
       type: "Downloads",
+      status: "coming_soon",
     },
   ] as MediaResource[],
 };
