@@ -68,7 +68,7 @@ export default function MaternalAdvocacyProjectPage() {
       />
 
       {/* Project overview */}
-      <ResearchSection id="overview" eyebrow={overview.eyebrow} title={overview.title} intro={overview.body}>
+      <ResearchSection id="overview" eyebrow={overview.eyebrow} title={overview.title} intro={overview.body} tone="alt">
         <ul className="overview-grid">
           {overview.groups.map((group, i) => (
             <li key={group.title} className="overview-grid__item">
@@ -92,8 +92,15 @@ export default function MaternalAdvocacyProjectPage() {
       </ResearchSection>
 
       {/* Three group sections */}
-      {researchGroups.map((group) => (
-        <ResearchSection key={group.id} id={group.id} eyebrow={group.eyebrow} title={group.title} intro={group.intro}>
+      {researchGroups.map((group, gi) => (
+        <ResearchSection
+          key={group.id}
+          id={group.id}
+          eyebrow={group.eyebrow}
+          title={group.title}
+          intro={group.intro}
+          tone={gi % 2 === 0 ? "default" : "alt"}
+        >
           <div className="research-split">
             <div className="text-block">
               {group.paragraphs.map((p, i) => (
@@ -106,7 +113,7 @@ export default function MaternalAdvocacyProjectPage() {
       ))}
 
       {/* Our study */}
-      <ResearchSection id="our-study" eyebrow={study.eyebrow} title={study.title}>
+      <ResearchSection id="our-study" eyebrow={study.eyebrow} title={study.title} tone="alt">
         <div className="study-callout">
           <p>{study.description}</p>
         </div>
@@ -164,7 +171,7 @@ export default function MaternalAdvocacyProjectPage() {
       </ResearchSection>
 
       {/* Media */}
-      <ResearchSection id="media" eyebrow={media.eyebrow} title={media.title} intro={media.intro}>
+      <ResearchSection id="media" eyebrow={media.eyebrow} title={media.title} intro={media.intro} tone="alt">
         <div className="card-grid card-grid--thirds">
           {media.resources.map((resource) => (
             <MediaResourceCard key={resource.title} resource={resource} />

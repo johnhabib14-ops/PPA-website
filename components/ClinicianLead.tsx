@@ -4,7 +4,7 @@ export function ClinicianLead({ headingId = "clinician-lead-heading" }: { headin
   const lead = getLeadClinician();
 
   return (
-    <section className="clinician-lead section section--alt" aria-labelledby={headingId}>
+    <section className="clinician-lead" aria-labelledby={headingId}>
       {/* TODO(launch): Replace placeholder fields in data/about.json (name, intro, photoAlt, specialties) with approved copy before launch. */}
       <div className="clinician-lead__grid">
         <div

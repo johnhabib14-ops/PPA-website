@@ -3,8 +3,6 @@ import type { ReactNode } from "react";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { SkipLink } from "@/components/SkipLink";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/site";
 
 function metadataBaseFallback(): URL {
@@ -62,13 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en">
       <body className={`${sourceSans.variable} ${sourceSerif.variable}`}>
         <SkipLink />
-        <div className="layout-shell">
-          <SiteHeader />
-          <main id="main-content" tabIndex={-1}>
-            <div className="container">{children}</div>
-          </main>
-          <SiteFooter />
-        </div>
+        {children}
       </body>
     </html>
   );

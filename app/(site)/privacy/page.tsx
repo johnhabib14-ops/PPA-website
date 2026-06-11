@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Band } from "@/components/Band";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Privacy & website notice",
@@ -10,16 +12,14 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <header className="page-header stack-tight">
-        <p className="eyebrow">Policies</p>
-        <h1>Privacy &amp; website notice</h1>
-        <p className="lead">
-          This page summarizes how we treat website communications. It does not replace a formal Notice of
-          Privacy Practices for established patients, which the office provides separately when required.
-        </p>
-      </header>
+      <PageHero
+        titleId="privacy-hero-heading"
+        eyebrow="Policies"
+        title="Privacy & website notice"
+        lead="This page summarizes how we treat website communications. It does not replace a formal Notice of Privacy Practices for established patients, which the office provides separately when required."
+      />
 
-      <section className="section section--first" aria-labelledby="emergency-heading">
+      <Band aria-labelledby="emergency-heading">
         <h2 id="emergency-heading" className="section-title">
           Emergencies
         </h2>
@@ -30,9 +30,9 @@ export default function PrivacyPage() {
             contact form are <strong>not</strong> monitored for emergencies.
           </p>
         </div>
-      </section>
+      </Band>
 
-      <section className="section" aria-labelledby="website-privacy-heading">
+      <Band tone="alt" aria-labelledby="website-privacy-heading">
         <h2 id="website-privacy-heading" className="section-title">
           Website &amp; contact form
         </h2>
@@ -50,9 +50,9 @@ export default function PrivacyPage() {
           For billing and insurance questions, see <Link href="/fees">Fees and insurance</Link>. For secure intake
           configuration notes, see <code>.env.example</code> in the project repository or ask your web developer.
         </p>
-      </section>
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="access-heading">
+      <Band aria-labelledby="access-heading">
         <h2 id="access-heading" className="section-title">
           Accessibility
         </h2>
@@ -61,7 +61,7 @@ export default function PrivacyPage() {
           contrast, visible focus indicators, and descriptive control labels. If you encounter a barrier, please
           tell us so we can correct it.
         </p>
-      </section>
+      </Band>
     </>
   );
 }

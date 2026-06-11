@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Band } from "@/components/Band";
+import { PageHero } from "@/components/PageHero";
 import { InsuranceList } from "@/components/InsuranceList";
 import { CONTACT_HREF } from "@/lib/nav";
 
@@ -12,17 +14,14 @@ export const metadata: Metadata = {
 export default function FeesPage() {
   return (
     <>
-      <header className="page-header stack-tight">
-        <p className="eyebrow">Transparency</p>
-        <h1>Fees and insurance</h1>
-        <p className="lead">
-          Billing depends on the service (assessment vs. therapy), your payer, and network status. Fee details are
-          discussed during consultation; insurance and benefits should be verified directly with your plan—we do not
-          guarantee coverage or reimbursement.
-        </p>
-      </header>
+      <PageHero
+        titleId="fees-hero-heading"
+        eyebrow="Transparency"
+        title="Fees and insurance"
+        lead="Billing depends on the service (assessment vs. therapy), your payer, and network status. Fee details are discussed during consultation; insurance and benefits should be verified directly with your plan—we do not guarantee coverage or reimbursement."
+      />
 
-      <section className="section section--first" aria-labelledby="fees-policy-heading">
+      <Band aria-labelledby="fees-policy-heading">
         <h2 id="fees-policy-heading" className="section-title">
           How we discuss fees
         </h2>
@@ -42,9 +41,9 @@ export default function FeesPage() {
           Questions about Good Faith Estimates under the No Surprises Act or a specific payer can be directed to
           administrative staff during business hours.
         </p>
-      </section>
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="therapy-fees-heading">
+      <Band tone="alt" aria-labelledby="therapy-fees-heading">
         <h2 id="therapy-fees-heading" className="section-title">
           Insurance for therapy
         </h2>
@@ -53,9 +52,9 @@ export default function FeesPage() {
           ensure your plan will cover a given service or visit.
         </p>
         <InsuranceList embedded />
-      </section>
+      </Band>
 
-      <section className="section" aria-labelledby="assessment-insurance-heading">
+      <Band aria-labelledby="assessment-insurance-heading">
         <h2 id="assessment-insurance-heading" className="section-title">
           Assessment and insurance
         </h2>
@@ -65,9 +64,9 @@ export default function FeesPage() {
           psychological testing benefits and any prior authorization rules. We do not imply guaranteed coverage for
           assessment services.
         </p>
-      </section>
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="fees-contact-heading">
+      <Band tone="alt" aria-labelledby="fees-contact-heading">
         <h2 id="fees-contact-heading" className="section-title">
           Ask a billing question
         </h2>
@@ -77,7 +76,7 @@ export default function FeesPage() {
         <Link className="button button--secondary" href={CONTACT_HREF}>
           Contact the office
         </Link>
-      </section>
+      </Band>
     </>
   );
 }

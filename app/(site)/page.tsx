@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Band } from "@/components/Band";
+import { PageHero } from "@/components/PageHero";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { ReferralSection } from "@/components/ReferralSection";
 import { ServiceOverviewCard } from "@/components/ServiceOverviewCard";
@@ -92,34 +94,31 @@ const THERAPY_FOCUS = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero hero--home" aria-labelledby="hero-heading">
-        <div className="hero-inner">
-          <p className="eyebrow">
-            {siteConfig.officeCity}, {siteConfig.address.state} · {siteConfig.regionLabel} area
-          </p>
-          <h1 id="hero-heading" className="hero__title">
-            {siteConfig.heroHeadline}
-          </h1>
-          <p className="lead">{siteConfig.heroSubheadline}</p>
-          <p>
-            {siteConfig.name} is a private neuropsychology-oriented practice for adults: formal evaluation when
-            referral questions call for testing, and psychotherapy when ongoing outpatient care is the right fit.
-            Language and recommendations stay measured—evaluation is guided by the referral question, and we avoid
-            promising specific labels or results.
-          </p>
-          <div className="hero__actions">
-            <Link className="button button--primary" href={CONTACT_HREF}>
-              Schedule consultation
-            </Link>
-            <Link className="button button--secondary" href="/#services-overview">
-              Explore services
-            </Link>
-          </div>
-          <TrustStrip />
+      <PageHero
+        size="tall"
+        titleId="hero-heading"
+        eyebrow={`${siteConfig.officeCity}, ${siteConfig.address.state} · ${siteConfig.regionLabel} area`}
+        title={siteConfig.heroHeadline}
+        lead={siteConfig.heroSubheadline}
+      >
+        <p>
+          {siteConfig.name} is a private neuropsychology-oriented practice for adults: formal evaluation when
+          referral questions call for testing, and psychotherapy when ongoing outpatient care is the right fit.
+          Language and recommendations stay measured—evaluation is guided by the referral question, and we avoid
+          promising specific labels or results.
+        </p>
+        <div className="page-hero__actions">
+          <Link className="button button--primary" href={CONTACT_HREF}>
+            Schedule consultation
+          </Link>
+          <Link className="button button--ghost-light" href="/#services-overview">
+            Explore services
+          </Link>
         </div>
-      </section>
+        <TrustStrip />
+      </PageHero>
 
-      <section className="section section--band" id="services-overview" aria-labelledby="services-overview-heading">
+      <Band id="services-overview" aria-labelledby="services-overview-heading">
         <h2 id="services-overview-heading" className="section-title">
           Two ways we can help
         </h2>
@@ -150,9 +149,9 @@ export default function HomePage() {
             headingLevel="h3"
           />
         </div>
-      </section>
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="neuro-home-heading">
+      <Band tone="alt" aria-labelledby="neuro-home-heading">
         <h2 id="neuro-home-heading" className="section-title">
           Neuropsychological assessment
         </h2>
@@ -179,9 +178,9 @@ export default function HomePage() {
             Full assessment information
           </Link>
         </p>
-      </section>
+      </Band>
 
-      <section className="section" aria-labelledby="therapy-home-heading">
+      <Band aria-labelledby="therapy-home-heading">
         <h2 id="therapy-home-heading" className="section-title">
           Therapy services
         </h2>
@@ -200,22 +199,25 @@ export default function HomePage() {
             Full therapy information
           </Link>
         </p>
-      </section>
+      </Band>
 
-      <ProcessSteps
-        sectionId="process-assessment-home"
-        sectionTitle="Assessment process"
-        steps={[...PROCESS_ASSESSMENT]}
-      />
+      <Band tone="alt">
+        <ProcessSteps
+          sectionId="process-assessment-home"
+          sectionTitle="Assessment process"
+          steps={[...PROCESS_ASSESSMENT]}
+        />
+      </Band>
 
-      <ProcessSteps
-        sectionId="process-therapy-home"
-        sectionTitle="Therapy process"
-        className="section--alt"
-        steps={[...PROCESS_THERAPY]}
-      />
+      <Band>
+        <ProcessSteps
+          sectionId="process-therapy-home"
+          sectionTitle="Therapy process"
+          steps={[...PROCESS_THERAPY]}
+        />
+      </Band>
 
-      <section className="section" id="about-preview" aria-labelledby="about-home-heading">
+      <Band tone="alt" id="about-preview" aria-labelledby="about-home-heading">
         <h2 id="about-home-heading" className="section-title">
           About the practice
         </h2>
@@ -227,11 +229,13 @@ export default function HomePage() {
         <p style={{ marginTop: "var(--space-xl)" }}>
           <Link href="/about">About page, credentials, and team structure</Link>
         </p>
-      </section>
+      </Band>
 
-      <ReferralSection />
+      <Band>
+        <ReferralSection />
+      </Band>
 
-      <section className="section" aria-labelledby="contact-home-heading">
+      <Band tone="alt" aria-labelledby="contact-home-heading">
         <h2 id="contact-home-heading" className="section-title">
           Location and contact
         </h2>
@@ -256,7 +260,7 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-      </section>
+      </Band>
     </>
   );
 }

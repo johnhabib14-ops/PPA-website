@@ -25,14 +25,28 @@ export const maternalAdvocacyProject = {
 export type ResearchNavLink = { label: string; href: string };
 
 export const maternalAdvocacyNav: ResearchNavLink[] = [
+  { label: "Overview", href: "#overview" },
   { label: "Madres de Plaza de Mayo", href: "#madres" },
-  { label: "Israeli Mothers After October 7", href: "#october7" },
+  { label: "Israeli Mothers", href: "#october7" },
   { label: "Ukrainian Mothers", href: "#ukraine" },
   { label: "Our Study", href: "#our-study" },
-  { label: "Graphs and Findings", href: "#findings" },
-  { label: "Media Resources", href: "#media" },
+  { label: "Findings", href: "#findings" },
+  { label: "Media", href: "#media" },
   { label: "Who We Are", href: "#team" },
 ];
+
+/** Chrome (own navbar + footer) shown only on the Maternal Advocacy Project page. */
+export const maternalAdvocacyChrome = {
+  navBrand: "The Maternal Advocacy Project",
+  navBrandHref: maternalAdvocacyProject.href,
+  parentBrand: "Pacific Psychological Associates",
+  parentHref: "/",
+  parentResearchHref: "/research",
+  footerBlurb:
+    "A trauma-informed comparative research project documenting how mothers advocate for children and families affected by political violence, abduction, and authoritarianism.",
+  footerNote:
+    "This project is part of the research program at Pacific Psychological Associates. Content is presented for scholarly and informational purposes and is not legal, medical, or psychological advice.",
+};
 
 export const overview = {
   eyebrow: "Project Overview",

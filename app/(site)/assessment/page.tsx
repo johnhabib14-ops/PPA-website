@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Band } from "@/components/Band";
+import { PageHero } from "@/components/PageHero";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { ReferralSection } from "@/components/ReferralSection";
 import { CONTACT_HREF } from "@/lib/nav";
@@ -58,18 +60,14 @@ const CONCERNS = [
 export default function AssessmentPage() {
   return (
     <>
-      <header className="page-header stack-tight">
-        <p className="eyebrow">Clinical neuropsychology</p>
-        <h1>Neuropsychological assessment</h1>
-        <p className="lead">
-          Adult neuropsychological evaluation in El Segundo for the greater Los Angeles area. We use
-          evidence-based measures and clinical interview to address focused referral questions—diagnostic
-          clarification, cognitive characterization, and recommendations that may support treatment planning when
-          findings allow.
-        </p>
-      </header>
+      <PageHero
+        titleId="assessment-hero-heading"
+        eyebrow="Clinical neuropsychology"
+        title="Neuropsychological assessment"
+        lead="Adult neuropsychological evaluation in El Segundo for the greater Los Angeles area. We use evidence-based measures and clinical interview to address focused referral questions—diagnostic clarification, cognitive characterization, and recommendations that may support treatment planning when findings allow."
+      />
 
-      <section className="section section--first" aria-labelledby="when-heading">
+      <Band aria-labelledby="when-heading">
         <h2 id="when-heading" className="section-title">
           When evaluation may help
         </h2>
@@ -80,9 +78,9 @@ export default function AssessmentPage() {
           support specific recommendations. We do not promise a particular diagnosis, score, or outcome; conclusions
           follow the evidence gathered and your history.
         </p>
-      </section>
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="domains-heading">
+      <Band tone="alt" aria-labelledby="domains-heading">
         <h2 id="domains-heading" className="section-title">
           Referral questions we often evaluate
         </h2>
@@ -100,9 +98,9 @@ export default function AssessmentPage() {
             </li>
           ))}
         </ul>
-      </section>
+      </Band>
 
-      <section className="section" aria-labelledby="outputs-heading">
+      <Band aria-labelledby="outputs-heading">
         <h2 id="outputs-heading" className="section-title">
           Treatment planning, practical recommendations, and collaboration
         </h2>
@@ -118,13 +116,17 @@ export default function AssessmentPage() {
           appropriate with permission; we do not provide legal advice, guarantee educational outcomes, or determine
           eligibility for programs or benefits.
         </p>
-      </section>
+      </Band>
 
-      <ProcessSteps sectionId="process-assessment" sectionTitle="How assessment proceeds" steps={[...STEPS]} />
+      <Band tone="alt">
+        <ProcessSteps sectionId="process-assessment" sectionTitle="How assessment proceeds" steps={[...STEPS]} />
+      </Band>
 
-      <ReferralSection />
+      <Band>
+        <ReferralSection />
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="assessment-cta-heading">
+      <Band tone="alt" aria-labelledby="assessment-cta-heading">
         <h2 id="assessment-cta-heading" className="section-title">
           Next steps
         </h2>
@@ -136,7 +138,7 @@ export default function AssessmentPage() {
         <Link className="button button--primary" href={CONTACT_HREF}>
           Schedule consultation
         </Link>
-      </section>
+      </Band>
     </>
   );
 }

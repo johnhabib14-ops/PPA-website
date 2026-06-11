@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Band } from "@/components/Band";
+import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { EmbeddedIntake } from "@/components/EmbeddedIntake";
 import { siteConfig, fullAddress, googleMapsUrl } from "@/lib/site";
@@ -16,16 +18,15 @@ export default function ContactPage() {
 
   return (
     <>
-      <header className="page-header stack-tight">
-        <p className="eyebrow">Scheduling and inquiries</p>
-        <h1>Contact</h1>
-        <p className="lead">
-          Use this page to request a consultation or ask a non-urgent administrative question. The form below is
-          for general inquiries only and is not monitored for emergencies.
-        </p>
-      </header>
+      <PageHero
+        titleId="contact-hero-heading"
+        eyebrow="Scheduling and inquiries"
+        title="Contact"
+        lead="Use this page to request a consultation or ask a non-urgent administrative question. The form below is for general inquiries only and is not monitored for emergencies."
+      />
 
-      <div className="contact-layout">
+      <Band>
+        <div className="contact-layout">
         <aside className="contact-sidebar" aria-label="Office location and hours">
           <div className="contact-office-card">
             <h2 className="section-title">Office</h2>
@@ -78,7 +79,8 @@ export default function ContactPage() {
             </div>
           </section>
         </div>
-      </div>
+        </div>
+      </Band>
     </>
   );
 }

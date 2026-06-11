@@ -1,6 +1,6 @@
 export function ReferralSection() {
   return (
-    <section className="referral-section section section--alt" aria-labelledby="referral-heading">
+    <section className="referral-section" aria-labelledby="referral-heading">
       <h2 id="referral-heading" className="section-title">
         Referrals for assessment
       </h2>

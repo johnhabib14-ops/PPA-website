@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Band } from "@/components/Band";
+import { PageHero } from "@/components/PageHero";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { CONTACT_HREF } from "@/lib/nav";
 
@@ -41,18 +43,14 @@ const FOCUS = [
 export default function TherapyPage() {
   return (
     <>
-      <header className="page-header stack-tight">
-        <p className="eyebrow">Outpatient psychotherapy</p>
-        <h1>Therapy services</h1>
-        <p className="lead">
-          Individual therapy for adults in El Segundo and greater Los Angeles—direct, warm, and grounded in
-          established psychological care. The same practice offers neuropsychological assessment; when testing is
-          part of your history, we may use that context in therapy only with appropriate consent and within ethical
-          scope.
-        </p>
-      </header>
+      <PageHero
+        titleId="therapy-hero-heading"
+        eyebrow="Outpatient psychotherapy"
+        title="Therapy services"
+        lead="Individual therapy for adults in El Segundo and greater Los Angeles—direct, warm, and grounded in established psychological care. The same practice offers neuropsychological assessment; when testing is part of your history, we may use that context in therapy only with appropriate consent and within ethical scope."
+      />
 
-      <section className="section section--first" aria-labelledby="therapy-neuro-heading">
+      <Band aria-labelledby="therapy-neuro-heading">
         <h2 id="therapy-neuro-heading" className="section-title">
           Therapy within a neuropsychology-informed practice
         </h2>
@@ -62,9 +60,9 @@ export default function TherapyPage() {
           <Link href="/assessment">neuropsychological assessment</Link> is described separately; some people pursue
           both over time, and others need only one service.
         </p>
-      </section>
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="therapy-fit-heading">
+      <Band tone="alt" aria-labelledby="therapy-fit-heading">
         <h2 id="therapy-fit-heading" className="section-title">
           What therapy here looks like
         </h2>
@@ -73,9 +71,9 @@ export default function TherapyPage() {
           and making decisions consistent with your values. Progress depends on many factors, including attendance,
           severity, and outside stressors; we revisit goals so care stays appropriate to your needs.
         </p>
-      </section>
+      </Band>
 
-      <section className="section" aria-labelledby="focus-heading">
+      <Band aria-labelledby="focus-heading">
         <h2 id="focus-heading" className="section-title">
           Areas we often address
         </h2>
@@ -84,9 +82,9 @@ export default function TherapyPage() {
             <li key={f}>{f}</li>
           ))}
         </ul>
-      </section>
+      </Band>
 
-      <section className="section section--alt" aria-labelledby="therapy-not-heading">
+      <Band tone="alt" aria-labelledby="therapy-not-heading">
         <h2 id="therapy-not-heading" className="section-title">
           Scope and limits
         </h2>
@@ -95,11 +93,13 @@ export default function TherapyPage() {
           therapy as a primary service is not described here; ask the office which modalities are available with
           specific clinicians.
         </p>
-      </section>
+      </Band>
 
-      <ProcessSteps sectionId="process-therapy" sectionTitle="Therapy process" steps={[...STEPS]} />
+      <Band>
+        <ProcessSteps sectionId="process-therapy" sectionTitle="Therapy process" steps={[...STEPS]} />
+      </Band>
 
-      <section className="section" aria-labelledby="therapy-cta-heading">
+      <Band tone="alt" aria-labelledby="therapy-cta-heading">
         <h2 id="therapy-cta-heading" className="section-title">
           Request a consultation
         </h2>
@@ -110,7 +110,7 @@ export default function TherapyPage() {
         <Link className="button button--primary" href={CONTACT_HREF}>
           Schedule consultation
         </Link>
-      </section>
+      </Band>
     </>
   );
 }

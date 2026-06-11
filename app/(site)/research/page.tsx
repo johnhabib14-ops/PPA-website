@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Band } from "@/components/Band";
 import { DarkHero } from "@/components/research/DarkHero";
 import { maternalAdvocacyProject } from "@/lib/research";
 
@@ -31,7 +32,7 @@ export default function ResearchPage() {
         intro="This section houses research projects, conference materials, and scholarly work associated with the practice and its collaborators. We share work that meets careful standards of evidence and is presented responsibly."
       />
 
-      <section className="section" aria-labelledby="featured-heading">
+      <Band aria-labelledby="featured-heading">
         <h2 id="featured-heading" className="section-title">
           Featured project
         </h2>
@@ -49,9 +50,9 @@ export default function ResearchPage() {
             </Link>
           </article>
         </div>
-      </section>
+      </Band>
 
-      <section className="section section--band" aria-labelledby="future-heading">
+      <Band tone="alt" aria-labelledby="future-heading">
         <h2 id="future-heading" className="section-title">
           More research to come
         </h2>
@@ -67,7 +68,7 @@ export default function ResearchPage() {
             </div>
           ))}
         </div>
-      </section>
+      </Band>
     </>
   );
 }

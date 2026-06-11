@@ -69,7 +69,7 @@ export function SiteHeader() {
     <header className={`site-header${open ? " site-header--nav-open" : ""}`}>
       <div className="site-header__inner">
         <Link className="brand" href="/" aria-label={`${siteConfig.name}, home page`}>
-          <SiteLogo variant="default" />
+          <SiteLogo variant="light" />
         </Link>
 
         <div className="header-tools">
