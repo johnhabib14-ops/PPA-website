@@ -108,6 +108,14 @@ export default function MaternalAdvocacyProjectPage() {
               {group.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
+              {group.subsections?.map((sub, si) => (
+                <div key={si} className="research-subsection">
+                  {sub.title ? <h3 className="research-subsection__title">{sub.title}</h3> : null}
+                  {sub.paragraphs.map((p, pi) => (
+                    <p key={pi}>{p}</p>
+                  ))}
+                </div>
+              ))}
               {group.resourceLinks?.length ? (
                 <ResearchResourceLinks links={group.resourceLinks} />
               ) : null}

@@ -51,12 +51,12 @@ export const maternalAdvocacyChrome = {
 export const overview = {
   eyebrow: "Project Overview",
   title: "Maternal advocacy across political and historical contexts",
-  body: "This project examines maternal advocacy across distinct political and historical settings. By placing these contexts in conversation, we study how mothers give voice to loss, demand accountability, and sustain hope under conditions of political violence. Our work centers language, testimony, advocacy, trauma, resilience, and political violence as connecting threads.",
+  body: "These women raised their children, supported their families, and from that commitment became political and moral actors. This project examines maternal advocacy across distinct political and historical settings where family members—including adult-aged children—have disappeared under repressive political regimes. By placing these contexts in conversation, we study how mothers give voice to loss, demand accountability, and sustain hope under conditions of political violence. Our work centers language, testimony, advocacy, trauma, resilience, and state violence as connecting threads.",
   groups: [
     {
       title: "Madres de Plaza de Mayo",
       blurb:
-        "Mothers who publicly advocated for their disappeared children during Argentina's military dictatorship.",
+        "Mothers who transformed private grief into coordinated advocacy during Argentina's Proceso, demanding truth for disappeared children.",
     },
     {
       title: "Israeli mothers after October 7",
@@ -66,7 +66,7 @@ export const overview = {
     {
       title: "Ukrainian mothers",
       blurb:
-        "Mothers affected by war, displacement, child abduction, and family separation amid ongoing political violence.",
+        "Mothers confronting wartime child abduction, forced transfer, and family separation—and organizing for reunification and accountability.",
     },
     {
       title: "Mothers in our comparative study",
@@ -81,6 +81,7 @@ export const overview = {
     "Trauma",
     "Resilience",
     "Political Violence",
+    "State Violence",
   ],
 };
 
@@ -97,12 +98,18 @@ export type ResearchPhoto = {
   caption?: string;
 };
 
+export type ResearchSubsection = {
+  title?: string;
+  paragraphs: string[];
+};
+
 export type ResearchGroup = {
   id: string;
   eyebrow: string;
   title: string;
   intro: string;
   paragraphs: string[];
+  subsections?: ResearchSubsection[];
   photos?: ResearchPhoto[];
   resourceLinks?: ResearchResourceLink[];
   placeholderLabel?: string;
@@ -119,10 +126,23 @@ export const researchGroups: ResearchGroup[] = [
     intro:
       "Mothers who publicly advocated for their disappeared children during Argentina's military dictatorship.",
     paragraphs: [
-      "The Madres de Plaza de Mayo are an association of Argentine mothers who came together to seek information about their children who were forcibly disappeared during the period of military dictatorship. Gathering publicly, they transformed private grief into sustained, visible advocacy.",
-      "Their weekly presence in the Plaza de Mayo became an enduring act of remembrance and public testimony. Through peaceful assembly and persistent demands for truth, they advanced the cause of accountability and resisted authoritarian violence.",
-      "Public commemorations in Buenos Aires have continued this tradition of visible remembrance. Gatherings bring together participants holding placards, banners, and symbolic figures representing the disappeared—sustaining a decades-long demand for truth, memory, and accountability.",
-      "This section emphasizes advocacy, remembrance, public testimony, and resistance. It is presented factually and respectfully, with attention to the dignity of the families involved.",
+      "The Madres de Plaza de Mayo are an association of Argentine mothers who came together to seek information about their children who were forcibly disappeared during the period of military dictatorship. Gathering publicly, they transformed private grief into sustained, visible advocacy—an organic response of mothers and other caregivers to the persecution and frequent homicides of young persons with opposing political views to the standing regime.",
+      "Their weekly presence in the Plaza de Mayo became an enduring act of remembrance and public testimony. Through peaceful assembly and persistent demands for truth, they advanced the cause of accountability and resisted authoritarian violence. The advocacy of mothers served as a contrary form of support that regimes had abdicated toward marginalized members of society.",
+    ],
+    subsections: [
+      {
+        title: "Argentina's Proceso and Maternal Advocacy",
+        paragraphs: [
+          "The founding mothers of the Plaza de Mayo emerged from a political environment defined by the Argentine junta's systematic use of enforced disappearance as a mechanism of social control during the Proceso. Their transformation from individual grieving mothers into a coordinated human-rights movement exemplifies what scholars describe as \"contentious motherhood\"—the politicization of maternal identity under authoritarian rule (Feijóo & Nari, 1996; Bosco, 2006).",
+          "The Mothers' founding nucleus—Azucena Villaflor, Esther Ballestrino de Careaga, María Ponce de Bianco, Josefina García de Noia, Mirta Acuña de Baravalle, and Hebe de Bonafini—constituted a heterogeneous but structurally coherent group whose activism redefined the boundaries of the possible under state terror.",
+          "The founding mothers were not professional activists. Most came from working-class or lower-middle-class households, with limited prior political engagement. Working-class women like Azucena Villaflor had deep ties to Peronist labor networks, which provided both a political vocabulary and a sense of collective agency. Educated migrants like Esther Ballestrino brought ideological sophistication, including Marxist and anti-imperialist frameworks, which shaped the group's early discourse. Mothers from the provinces like María Ponce de Bianco embodied the demographic shifts of mid-century Argentina, linking the Madres to broader patterns of urbanization, gender equity, and social mobility. This diversity of maternal advocacy produced a shared identity rooted in motherhood but shaped by distinct class, ideological, and regional trajectories.",
+        ],
+      },
+      {
+        paragraphs: [
+          "Public commemorations in Buenos Aires have continued this tradition of visible remembrance. Gatherings bring together participants holding placards, banners, and symbolic figures representing the disappeared—sustaining a decades-long demand for truth, memory, and accountability.",
+        ],
+      },
     ],
     photos: [
       {
@@ -191,12 +211,56 @@ export const researchGroups: ResearchGroup[] = [
     intro:
       "Mothers affected by war, displacement, child abduction, family separation, and political violence.",
     paragraphs: [
-      "This section focuses on Ukrainian mothers affected by war, displacement, child abduction, family separation, and political violence. It documents how mothers advocate for the recognition, protection, and return of their children and families.",
-      "Media reporting and advocacy interviews have described the unlawful transfer and abduction of Ukrainian children amid ongoing conflict, including efforts by parents to locate and retrieve children across occupied territory. These accounts emphasize identity erasure, family separation, and the psychological toll on parents and children alike.",
-      "The emphasis remains on maternal advocacy, trauma, and resilience, alongside appeals for recognition, protection, and justice. Figures cited in public reporting—including estimates of thousands of children identified by Ukrainian authorities—are reported estimates from advocacy and official sources, not verified research data from this project.",
-      "We present this material with respect for those affected and as context for understanding contemporary maternal advocacy under conditions of political violence.",
+      "This section documents how Ukrainian mothers advocate for the recognition, protection, and return of their children and families amid ongoing conflict. Their efforts of advocacy and defiance respond to conditions in which state actors have abandoned care for marginalized populations—offering a contrary form of support where official protection has failed.",
+    ],
+    subsections: [
+      {
+        title: "Child Abduction During the War in Ukraine",
+        paragraphs: [
+          "From the earliest months of Russia's full-scale invasion of Ukraine in 2022, international monitors began documenting the systematic removal of Ukrainian children from occupied territories. Initial reports described evacuations from besieged cities such as Mariupol and Kherson, but subsequent investigations by the United Nations and independent research groups found that many of these transfers were not temporary wartime relocations but coordinated state-run programs.",
+          "Children were taken from orphanages, hospitals, foster families, and, most controversially, from parents who were told their children would return after \"recreation\" or \"medical treatment.\" Instead, many were transported deeper into Russian-controlled areas or across the border into the Russian Federation. Russian officials publicly acknowledged these transfers, framing them as humanitarian rescue efforts, even as Ukrainian families reported being unable to contact or retrieve their children.",
+          "By late 2022 and throughout 2023, the scale and organization of these operations became clearer. The Yale Humanitarian Research Lab identified a network of dozens of facilities involved in the relocation, \"re-education,\" or adoption of Ukrainian children, while the UN Commission of Inquiry on Ukraine verified cases of forced transfer that met the legal definition of a war crime. In March 2023, the International Criminal Court issued arrest warrants for President Vladimir Putin and Children's Rights Commissioner Maria Lvova-Belova, citing evidence that the deportations were systematic and directed at the highest levels of government.",
+          "Many children were placed in Russian foster families, given Russian passports, or subjected to programs aimed at erasing Ukrainian identity. Although some have been returned through complex diplomatic and humanitarian channels, thousands remain unaccounted for, and the practice has become one of the most internationally condemned aspects of the war.",
+        ],
+      },
+      {
+        title: "Documentation and Legal Corroboration",
+        paragraphs: [
+          "Several agencies have organized this information to clarify the significance of the forced abduction of children in Ukraine. UN Commission reports on verified cases explicitly distinguish between confirmed numbers—approximately 1,200—and the larger, likely undercounted universe of deported children. UN and Yale analyses both describe a coordinated policy involving passport changes, adoption procedures, \"re-education\" programs, and obstruction of family reunification rather than incidental wartime displacement.",
+          "The Yale Humanitarian Research Lab combines named child lists, transport records, facility rosters, satellite imagery, and Russian official statements, mapping a network of camps and institutions used for relocation and \"re-education.\" ICC arrest warrants signal that independent prosecutors and judges found sufficient evidence that deportations were systematic, organized, and attributable to senior Russian officials.",
+          "Figures cited in public reporting—including estimates of thousands of children identified by Ukrainian authorities—are reported estimates from advocacy and official sources, not verified research data from this project. We present this material with respect for those affected and as context for understanding contemporary maternal advocacy under conditions of political violence.",
+        ],
+      },
+      {
+        title: "Contemporary Ukrainian Family Advocacy Organizations",
+        paragraphs: [
+          "Save Ukraine has become one of the main family-reunification organizations in Ukraine. Founded by former Children's Ombudsman Mykola Kuleba, the NGO is involved in cross-border rescue missions to retrieve abducted children. The organization works directly with mothers and grandmothers who travel into Russia or occupied territories to recover their children, and has facilitated the return of hundreds of children—often documenting the process publicly. Many widely reported reunifications involve mothers traveling with Save Ukraine teams.",
+          "The Association of Families of Deported Children is the closest equivalent to a dedicated mothers' movement for abducted Ukrainian children. Formed by mothers, grandmothers, and guardians of children taken to Russia or occupied territories, the organization provides testimony, documentation, and legal evidence to the ICC, UN, and Ukrainian prosecutors. It organizes public demonstrations, media campaigns, and international advocacy—functioning similarly to historical mothers' human-rights groups such as the Madres de Plaza de Mayo, though adapted to wartime conditions.",
+        ],
+      },
     ],
     resourceLinks: [
+      {
+        title: "Yale Humanitarian Research Lab",
+        url: "https://medicine.yale.edu/lab/khoshnood/",
+        source: "Yale School of Public Health",
+        summary:
+          "The Yale Humanitarian Research Lab documents Russia's deportation, \"re-education,\" and coerced adoption of Ukrainian children through named child lists, transport records, facility rosters, satellite imagery, and Russian official statements—mapping a network of camps and institutions used for relocation and indoctrination.",
+      },
+      {
+        title: "ICC arrest warrants: Situation in Ukraine",
+        url: "https://www.icc-cpi.int/news/situation-ukraine-icc-judges-issue-arrest-warrants-against-vladimir-vladimirovich-putin-and",
+        source: "International Criminal Court (17 March 2023)",
+        summary:
+          "ICC Pre-Trial Chamber II issued arrest warrants for Vladimir Putin and Maria Lvova-Belova for the war crimes of unlawful deportation and transfer of children from occupied areas of Ukraine to the Russian Federation—signaling that independent prosecutors and judges found sufficient evidence that deportations were systematic and attributable to senior Russian officials.",
+      },
+      {
+        title: "Save Ukraine",
+        url: "https://www.saveukraineua.org/",
+        source: "Save Ukraine NGO",
+        summary:
+          "Save Ukraine organizes cross-border rescue missions to return forcibly deported children, working directly with mothers and grandmothers who travel into Russia or occupied territories. Founded by former Children's Ombudsman Mykola Kuleba, the organization has facilitated the return of hundreds of children and documents reunification efforts publicly.",
+      },
       {
         title: "They're stealing the children. Ukraine is fighting back.",
         url: "https://www.sexyboomershow.com/theyre-stealing-the-children-ukraine-is-fighting-back/",
@@ -212,7 +276,7 @@ export const study = {
   eyebrow: "Section 4",
   title: "Our Study",
   description:
-    "This project uses content analysis of interviews with two sample populations of mothers whose children were victimized by political violence.",
+    "The study strategies seek to provide a greater understanding of forms of maternal advocacy found in cases of disappeared family members, including adult-aged children, by repressive political regimes. Consistent with Orozco Mendoza's (2026) observation, this maternal contract is an organic response of mothers and other caregivers to the persecution and frequent homicides of young persons with opposing political views to the standing regime. These efforts of advocacy and defiance are in response to regimes that abandon their care for marginalized members of society. This project uses content analysis of interviews with two sample populations of mothers whose children were victimized by political violence.",
   groups: [
     {
       label: "Group 1",
@@ -250,11 +314,11 @@ export const study = {
     items: [
       {
         title: "Motherhood",
-        body: "Placeholder description of how motherhood is conceptualized in the study, including maternal identity, caregiving, and advocacy on behalf of children and family.",
+        body: "Mothers and other caregivers who raised children and supported families became political and moral actors through advocacy—a maternal identity politicized under authoritarian rule and wartime conditions. The study examines how motherhood is expressed in testimony, including caregiving, demands for recognition, and sustained public appeals on behalf of children and family.",
       },
       {
         title: "Political Violence",
-        body: "Placeholder description of political violence as a context shaping testimony, including abduction, disappearance, displacement, and authoritarian conditions.",
+        body: "Political violence shapes the contexts in which maternal advocacy emerges, including enforced disappearance, abduction, deportation, displacement, and state-led programs of family separation. The analysis attends to how testimony reflects conditions of authoritarian control and armed conflict.",
       },
       {
         title: "LIWC Validity and Utility",
@@ -364,11 +428,28 @@ export const media = {
       status: "available",
     },
     {
-      title: "Reports",
+      title: "Yale Humanitarian Research Lab",
       description:
-        "Research reports, summaries, and documentation produced by the project and partners.",
+        "Investigations documenting Russia's systematic deportation, \"re-education,\" and coerced adoption of Ukrainian children—including facility mapping and transport records.",
       type: "Reports",
-      status: "coming_soon",
+      url: "https://medicine.yale.edu/lab/khoshnood/",
+      status: "available",
+    },
+    {
+      title: "ICC arrest warrants (Ukraine)",
+      description:
+        "International Criminal Court warrants issued in March 2023 for unlawful deportation and transfer of Ukrainian children.",
+      type: "Reports",
+      url: "https://www.icc-cpi.int/news/situation-ukraine-icc-judges-issue-arrest-warrants-against-vladimir-vladimirovich-putin-and",
+      status: "available",
+    },
+    {
+      title: "Save Ukraine",
+      description:
+        "Humanitarian organization facilitating cross-border rescue missions and family reunification for forcibly deported Ukrainian children.",
+      type: "Reports",
+      url: "https://www.saveukraineua.org/",
+      status: "available",
     },
     {
       title: "Downloadable Resources",
