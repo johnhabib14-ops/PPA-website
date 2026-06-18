@@ -104,20 +104,38 @@ export default function MaternalAdvocacyProjectPage() {
           tone={gi % 2 === 0 ? "default" : "alt"}
         >
           <div className="research-split">
-            <div className="text-block">
-              {group.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-              {group.subsections?.map((sub, si) => (
-                <div key={si} className="research-subsection">
-                  {sub.title ? <h3 className="research-subsection__title">{sub.title}</h3> : null}
-                  {sub.paragraphs.map((p, pi) => (
-                    <p key={pi}>{p}</p>
+            <div className="research-body">
+              <div className="text-block research-lead">
+                {group.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+              {group.quote ? (
+                <blockquote className="study-callout research-quote">
+                  <p>{group.quote}</p>
+                </blockquote>
+              ) : null}
+              {group.subsections?.length ? (
+                <div className="research-subsections-grid card-grid">
+                  {group.subsections.map((sub, si) => (
+                    <article key={si} className="construct-card">
+                      {sub.title ? <h4>{sub.title}</h4> : null}
+                      {sub.paragraphs.map((p, pi) => (
+                        <p key={pi}>{p}</p>
+                      ))}
+                    </article>
                   ))}
                 </div>
-              ))}
-              {group.resourceLinks?.length ? (
-                <ResearchResourceLinks links={group.resourceLinks} />
+              ) : null}
+              {group.collapsible ? (
+                <details className="research-collapsible">
+                  <summary>{group.collapsible.title}</summary>
+                  <div className="text-block">
+                    {group.collapsible.paragraphs.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
+                </details>
               ) : null}
             </div>
             {group.photos?.length ? (
@@ -126,6 +144,12 @@ export default function MaternalAdvocacyProjectPage() {
               <PlaceholderFigure label={group.placeholderLabel} note={group.placeholderNote} />
             ) : null}
           </div>
+          {group.resourceLinks?.length ? (
+            <div className="research-resources">
+              <h3 className="research-resources__title">Further reading</h3>
+              <ResearchResourceLinks links={group.resourceLinks} />
+            </div>
+          ) : null}
         </ResearchSection>
       ))}
 

@@ -73,6 +73,11 @@ export const overview = {
       blurb:
         "Mothers whose testimony forms the basis of our comparative linguistic analysis of advocacy and trauma.",
     },
+    {
+      title: "Cross-conflict maternal peace",
+      blurb:
+        "Palestinian and Israeli mothers organizing for dialogue, hostage return, and political resolution amid ongoing violence.",
+    },
   ],
   tags: [
     "Language",
@@ -110,6 +115,8 @@ export type ResearchGroup = {
   intro: string;
   paragraphs: string[];
   subsections?: ResearchSubsection[];
+  collapsible?: ResearchSubsection;
+  quote?: string;
   photos?: ResearchPhoto[];
   resourceLinks?: ResearchResourceLink[];
   placeholderLabel?: string;
@@ -129,22 +136,35 @@ export const researchGroups: ResearchGroup[] = [
       "The Madres de Plaza de Mayo are an association of Argentine mothers who came together to seek information about their children who were forcibly disappeared during the period of military dictatorship. Gathering publicly, they transformed private grief into sustained, visible advocacy—an organic response of mothers and other caregivers to the persecution and frequent homicides of young persons with opposing political views to the standing regime.",
       "Their weekly presence in the Plaza de Mayo became an enduring act of remembrance and public testimony. Through peaceful assembly and persistent demands for truth, they advanced the cause of accountability and resisted authoritarian violence. The advocacy of mothers served as a contrary form of support that regimes had abdicated toward marginalized members of society.",
     ],
+    collapsible: {
+      title: "Founding mothers and contentious motherhood",
+      paragraphs: [
+        "The founding mothers of the Plaza de Mayo emerged from a political environment defined by the Argentine junta's systematic use of enforced disappearance as a mechanism of social control during the Proceso. Their transformation from individual grieving mothers into a coordinated human-rights movement exemplifies what scholars describe as \"contentious motherhood\"—the politicization of maternal identity under authoritarian rule (Feijóo & Nari, 1996; Bosco, 2006).",
+        "The Mothers' founding nucleus—Azucena Villaflor, Esther Ballestrino de Careaga, María Ponce de Bianco, Josefina García de Noia, Mirta Acuña de Baravalle, and Hebe de Bonafini—constituted a heterogeneous but structurally coherent group whose activism redefined the boundaries of the possible under state terror.",
+        "The founding mothers were not professional activists. Most came from working-class or lower-middle-class households, with limited prior political engagement. Working-class women like Azucena Villaflor had deep ties to Peronist labor networks, which provided both a political vocabulary and a sense of collective agency. Educated migrants like Esther Ballestrino brought ideological sophistication, including Marxist and anti-imperialist frameworks, which shaped the group's early discourse. Mothers from the provinces like María Ponce de Bianco embodied the demographic shifts of mid-century Argentina, linking the Madres to broader patterns of urbanization, gender equity, and social mobility. This diversity of maternal advocacy produced a shared identity rooted in motherhood but shaped by distinct class, ideological, and regional trajectories.",
+      ],
+    },
     subsections: [
       {
-        title: "Argentina's Proceso and Maternal Advocacy",
-        paragraphs: [
-          "The founding mothers of the Plaza de Mayo emerged from a political environment defined by the Argentine junta's systematic use of enforced disappearance as a mechanism of social control during the Proceso. Their transformation from individual grieving mothers into a coordinated human-rights movement exemplifies what scholars describe as \"contentious motherhood\"—the politicization of maternal identity under authoritarian rule (Feijóo & Nari, 1996; Bosco, 2006).",
-          "The Mothers' founding nucleus—Azucena Villaflor, Esther Ballestrino de Careaga, María Ponce de Bianco, Josefina García de Noia, Mirta Acuña de Baravalle, and Hebe de Bonafini—constituted a heterogeneous but structurally coherent group whose activism redefined the boundaries of the possible under state terror.",
-          "The founding mothers were not professional activists. Most came from working-class or lower-middle-class households, with limited prior political engagement. Working-class women like Azucena Villaflor had deep ties to Peronist labor networks, which provided both a political vocabulary and a sense of collective agency. Educated migrants like Esther Ballestrino brought ideological sophistication, including Marxist and anti-imperialist frameworks, which shaped the group's early discourse. Mothers from the provinces like María Ponce de Bianco embodied the demographic shifts of mid-century Argentina, linking the Madres to broader patterns of urbanization, gender equity, and social mobility. This diversity of maternal advocacy produced a shared identity rooted in motherhood but shaped by distinct class, ideological, and regional trajectories.",
-        ],
-      },
-      {
+        title: "Visible remembrance",
         paragraphs: [
           "Public commemorations in Buenos Aires have continued this tradition of visible remembrance. Gatherings bring together participants holding placards, banners, and symbolic figures representing the disappeared—sustaining a decades-long demand for truth, memory, and accountability.",
         ],
       },
     ],
     photos: [
+      {
+        src: `${MADRES_PHOTO_BASE}/madres-banner-protest.png`,
+        alt: "Mothers of the Plaza de Mayo holding a banner demanding the return of detained-disappeared persons alive.",
+        caption:
+          "Mothers of the Plaza de Mayo at a public demonstration demanding the return of the detained-disappeared alive.",
+      },
+      {
+        src: `${MADRES_PHOTO_BASE}/desaparecidos-portrait-grid.png`,
+        alt: "Grid of black-and-white portrait photographs of disappeared persons.",
+        caption:
+          "Portrait photographs of disappeared persons, illustrating individualized remembrance at scale.",
+      },
       {
         src: `${MADRES_PHOTO_BASE}/commemoration-crowd-plaza-01.png`,
         alt: "Large crowd gathered at an outdoor commemoration in Buenos Aires, with participants holding white cutout figures.",
@@ -196,13 +216,77 @@ export const researchGroups: ResearchGroup[] = [
     intro:
       "Mothers advocating after the October 7 attacks, with attention to families affected by abduction, loss, and political violence.",
     paragraphs: [
-      "This section focuses on Israeli mothers who have advocated publicly following the October 7 attacks, including mothers whose children or family members were abducted, killed, or otherwise victimized by political violence.",
-      "We approach this material with care and trauma-informed language. The emphasis is on advocacy, grief, uncertainty, public appeals, and family-centered testimony, rather than on graphic detail.",
-      "Content here aims to document how mothers articulate hope, demand the safe return of loved ones, and sustain public attention through ongoing uncertainty.",
+      "Following the October 7 attacks, dozens of mothers became the public faces of advocacy for hostages and missing family members through the Hostages and Missing Families Forum (#BringThemHomeNow). We approach this material with care and trauma-informed language, emphasizing advocacy, grief, and family-centered testimony rather than graphic detail.",
     ],
-    placeholderLabel: "Interview excerpts, advocacy statements, or media links",
-    placeholderNote:
-      "Placeholder for interview excerpts, advocacy statements, or carefully selected media links to be added later.",
+    quote:
+      "\u201cOur voices are excluded from the rooms where decisions are made for us and our children.\u201d \u2014 Mothers Call",
+    subsections: [
+      {
+        title: "Hostage advocacy after October 7",
+        paragraphs: [
+          "The Hostages and Missing Families Forum has coordinated sustained public appeals for the safe return of abducted family members. Mothers have worn photographs of loved ones, addressed media and international audiences, and demanded government action—exemplifying maternal advocacy under conditions of abduction, uncertainty, and political violence.",
+        ],
+      },
+      {
+        title: "Named advocates",
+        paragraphs: [
+          "Documented public faces of hostage advocacy include Rachel Goldberg-Polin (son Hersh Goldberg-Polin); Shira Albag (daughter Liri Albag); Keren Schem (daughter Mia Schem); Simona Steinbrecher (daughter Agam Steinbrecher); Nitza Korngold (son Tal Shoham); Shelly Shem-Tov (son Omer Shem-Tov); Hagit Chen (son Itay Chen); Yael Adar (son Tamir Adar); Varda Ben Baruch (grandson Edan Alexander); Niva Wenkert (daughter Agam Berger); Ruty Strum (sons Iair and Eitan Horn); and Osnat Sharabi (brothers Eli and Yossi Sharabi).",
+        ],
+      },
+      {
+        title: "Cross-conflict bereavement and peace",
+        paragraphs: [
+          "The Parents Circle – Families Forum (PCFF) is a joint Israeli-Palestinian organization of more than 800 bereaved families who have lost immediate relatives to the conflict. Founded in 1995, members choose to transform private grief into dialogue, reconciliation, and public education.",
+          "Mothers Call unites Palestinian and Israeli women for peace, freedom, equality, and security for children. The campaign grew from a partnership between Women of the Sun (Palestinian) and Women Wage Peace (Israeli), signed in 2022. It has been nominated for the 2025 Nobel Peace Prize and was a 2024 Sakharov Prize finalist.",
+          "MADRE partners with local Palestinian organizers to deliver mental health support, healthcare, and clean water amid occupation. Its \"Resist In Body\" program brings Palestinian and Israeli midwives together to demand an end to occupation policies that block reproductive healthcare in the West Bank.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        src: "/images/research/israel/bring-them-home-mothers.png",
+        alt: "Israeli mothers wearing shirts with photographs of abducted family members and Bring Them Home advocacy messages.",
+        caption:
+          "Mothers wearing advocacy shirts with photographs of abducted family members and Bring Them Home messages.",
+      },
+    ],
+    resourceLinks: [
+      {
+        title: "Bring Them Home Now",
+        url: "https://bringthemhomenow.net/",
+        source: "Hostages and Missing Families Forum",
+        summary:
+          "The Hostages and Missing Families Forum coordinates public advocacy for the safe return of hostages and missing persons taken during the October 7 attacks, including sustained campaigns led by affected families.",
+      },
+      {
+        title: "Parents Circle – Families Forum",
+        url: "https://www.theparentscircle.org/en/about_eng-2/",
+        source: "Parents Circle – Families Forum",
+        summary:
+          "A joint Israeli-Palestinian organization of more than 800 bereaved families who transform grief into dialogue, reconciliation, and peace education in schools and communities across the region.",
+      },
+      {
+        title: "Mothers Call",
+        url: "https://mothers-call.org/",
+        source: "Mothers Call",
+        summary:
+          "A cross-conflict campaign of Palestinian and Israeli women united for peace, freedom, equality, and security for children—partnership between Women of the Sun and Women Wage Peace.",
+      },
+      {
+        title: "MADRE: Palestine",
+        url: "https://www.madre.org/palestine/",
+        source: "MADRE",
+        summary:
+          "MADRE partners with local Palestinian organizers to provide mental health support for children, healthcare access, and clean water—alongside midwife-led advocacy for reproductive healthcare in the West Bank.",
+      },
+      {
+        title: "Israeli Mothers — Hostage Advocacy Reference",
+        url: "/documents/research/israeli-mothers-hostage-advocacy.pdf",
+        source: "Pacific Psychological Associates research materials",
+        summary:
+          "Downloadable reference table of documented mothers in the Hostages and Missing Families Forum (#BringThemHomeNow), compiled from scholarly correspondence with Dr. Edward Dunbar.",
+      },
+    ],
   },
   {
     id: "ukraine",
@@ -211,35 +295,60 @@ export const researchGroups: ResearchGroup[] = [
     intro:
       "Mothers affected by war, displacement, child abduction, family separation, and political violence.",
     paragraphs: [
-      "This section documents how Ukrainian mothers advocate for the recognition, protection, and return of their children and families amid ongoing conflict. Their efforts of advocacy and defiance respond to conditions in which state actors have abandoned care for marginalized populations—offering a contrary form of support where official protection has failed.",
+      "Ukrainian mothers advocate for the recognition, protection, and return of their children amid ongoing conflict—organizing family reunification efforts where official protection has failed.",
     ],
+    quote:
+      "\u201cIt\u2019s very important not to be strong alone.\u201d \u2014 Lidiya, Kharkiv (via HIAS)",
     subsections: [
       {
-        title: "Child Abduction During the War in Ukraine",
+        title: "Child abduction during the war",
         paragraphs: [
-          "From the earliest months of Russia's full-scale invasion of Ukraine in 2022, international monitors began documenting the systematic removal of Ukrainian children from occupied territories. Initial reports described evacuations from besieged cities such as Mariupol and Kherson, but subsequent investigations by the United Nations and independent research groups found that many of these transfers were not temporary wartime relocations but coordinated state-run programs.",
-          "Children were taken from orphanages, hospitals, foster families, and, most controversially, from parents who were told their children would return after \"recreation\" or \"medical treatment.\" Instead, many were transported deeper into Russian-controlled areas or across the border into the Russian Federation. Russian officials publicly acknowledged these transfers, framing them as humanitarian rescue efforts, even as Ukrainian families reported being unable to contact or retrieve their children.",
-          "By late 2022 and throughout 2023, the scale and organization of these operations became clearer. The Yale Humanitarian Research Lab identified a network of dozens of facilities involved in the relocation, \"re-education,\" or adoption of Ukrainian children, while the UN Commission of Inquiry on Ukraine verified cases of forced transfer that met the legal definition of a war crime. In March 2023, the International Criminal Court issued arrest warrants for President Vladimir Putin and Children's Rights Commissioner Maria Lvova-Belova, citing evidence that the deportations were systematic and directed at the highest levels of government.",
-          "Many children were placed in Russian foster families, given Russian passports, or subjected to programs aimed at erasing Ukrainian identity. Although some have been returned through complex diplomatic and humanitarian channels, thousands remain unaccounted for, and the practice has become one of the most internationally condemned aspects of the war.",
+          "From the earliest months of Russia's full-scale invasion, international monitors documented the systematic removal of Ukrainian children from occupied territories. Investigations found coordinated state-run programs—not temporary wartime relocations—involving passport changes, illegal adoption, \"re-education,\" and obstruction of family reunification. In March 2023, the ICC issued arrest warrants citing evidence that deportations were systematic and directed at the highest levels of government.",
         ],
       },
       {
-        title: "Documentation and Legal Corroboration",
+        title: "International legal response",
         paragraphs: [
-          "Several agencies have organized this information to clarify the significance of the forced abduction of children in Ukraine. UN Commission reports on verified cases explicitly distinguish between confirmed numbers—approximately 1,200—and the larger, likely undercounted universe of deported children. UN and Yale analyses both describe a coordinated policy involving passport changes, adoption procedures, \"re-education\" programs, and obstruction of family reunification rather than incidental wartime displacement.",
-          "The Yale Humanitarian Research Lab combines named child lists, transport records, facility rosters, satellite imagery, and Russian official statements, mapping a network of camps and institutions used for relocation and \"re-education.\" ICC arrest warrants signal that independent prosecutors and judges found sufficient evidence that deportations were systematic, organized, and attributable to senior Russian officials.",
-          "Figures cited in public reporting—including estimates of thousands of children identified by Ukrainian authorities—are reported estimates from advocacy and official sources, not verified research data from this project. We present this material with respect for those affected and as context for understanding contemporary maternal advocacy under conditions of political violence.",
+          "On December 3, 2025, the UN General Assembly adopted a resolution demanding Russia immediately return all forcibly taken Ukrainian children and cease practices of citizenship change, illegal adoption, and transfer to Russian families. Ukrainian prosecutors have verified 19,546 deported or forcibly relocated children; as of late 2025, only 1,876 have returned home—underscoring the urgency of international pressure and family-led advocacy.",
         ],
       },
       {
-        title: "Contemporary Ukrainian Family Advocacy Organizations",
+        title: "Humanitarian recovery",
         paragraphs: [
-          "Save Ukraine has become one of the main family-reunification organizations in Ukraine. Founded by former Children's Ombudsman Mykola Kuleba, the NGO is involved in cross-border rescue missions to retrieve abducted children. The organization works directly with mothers and grandmothers who travel into Russia or occupied territories to recover their children, and has facilitated the return of hundreds of children—often documenting the process publicly. Many widely reported reunifications involve mothers traveling with Save Ukraine teams.",
-          "The Association of Families of Deported Children is the closest equivalent to a dedicated mothers' movement for abducted Ukrainian children. Formed by mothers, grandmothers, and guardians of children taken to Russia or occupied territories, the organization provides testimony, documentation, and legal evidence to the ICC, UN, and Ukrainian prosecutors. It organizes public demonstrations, media campaigns, and international advocacy—functioning similarly to historical mothers' human-rights groups such as the Madres de Plaza de Mayo, though adapted to wartime conditions.",
+          "Humanitarian organizations including HIAS and local partners operate mobile brigades and safe spaces near the frontlines, providing mental health support, violence prevention, and economic assistance to displaced mothers and children. Partners include Power of a Woman, Angels of Salvation, and the Kherson \"Successful Woman\" center, funded in part by the German Federal Foreign Office.",
+          "As Roma mother Anna* reflected after receiving dignity kits: \"I felt cared for. We are usually ignored, and no one ever asks if we need support.\"",
         ],
+      },
+      {
+        title: "Family reunification organizations",
+        paragraphs: [
+          "Save Ukraine organizes cross-border rescue missions, working directly with mothers and grandmothers who travel into Russia or occupied territories to recover their children. The Association of Families of Deported Children provides testimony and legal evidence to the ICC, UN, and Ukrainian prosecutors—functioning similarly to historical mothers' human-rights groups, adapted to wartime conditions.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        src: "/images/research/ukraine/hias-mobile-brigade-dnipro.png",
+        alt: "Ukrainian mothers and children at a HIAS mobile social assistance brigade in Dnipropetrovsk region.",
+        caption:
+          "Mothers and children at a HIAS mobile social assistance brigade in Dnipropetrovsk region.",
       },
     ],
     resourceLinks: [
+      {
+        title: "Four Years of War, Four Stories of Ukrainians Recovering Against All Odds",
+        url: "https://hias.org/news/four-years-war-four-stories-ukrainians-recovering-against-all-odds/",
+        source: "HIAS",
+        summary:
+          "HIAS profiles Ukrainian mothers and families rebuilding after shelling, displacement, and frontline violence—through mobile brigades, art therapy, violence prevention, and economic assistance near the frontlines.",
+      },
+      {
+        title: "Return of Ukrainian Children: A Common Duty of the Civilized World",
+        url: "https://gp.gov.ua/en/posts/povernennya-ukrayinskix-ditei-spilnii-obovyazok-civilizovanogo-svitu",
+        source: "Office of the Prosecutor General of Ukraine",
+        summary:
+          "Official account of the December 2025 UN General Assembly resolution demanding the return of forcibly taken Ukrainian children, with verified statistics on deportation, return, and criminal proceedings.",
+      },
       {
         title: "Yale Humanitarian Research Lab",
         url: "https://medicine.yale.edu/lab/khoshnood/",
@@ -402,7 +511,7 @@ export const media = {
   title: "Media Resources",
   intro:
     "A growing collection of materials related to the project. Selected media and research materials will be added as the project develops.",
-  note: "Placeholders below indicate the categories of resources that will be made available.",
+  note: "Additional briefs and citations will be added as the project develops.",
   resources: [
     {
       title: "Articles",
@@ -452,11 +561,60 @@ export const media = {
       status: "available",
     },
     {
-      title: "Downloadable Resources",
+      title: "Four Years of War, Four Stories of Ukrainians Recovering",
       description:
-        "Briefs, citations, and materials available for download by researchers and the public.",
+        "HIAS profiles maternal resilience and humanitarian recovery for displaced Ukrainian families near the frontlines.",
+      type: "Articles",
+      url: "https://hias.org/news/four-years-war-four-stories-ukrainians-recovering-against-all-odds/",
+      status: "available",
+    },
+    {
+      title: "Return of Ukrainian Children (UN resolution)",
+      description:
+        "Prosecutor General of Ukraine on the December 2025 UN General Assembly resolution and verified deportation statistics.",
+      type: "Reports",
+      url: "https://gp.gov.ua/en/posts/povernennya-ukrayinskix-ditei-spilnii-obovyazok-civilizovanogo-svitu",
+      status: "available",
+    },
+    {
+      title: "Parents Circle – Families Forum",
+      description:
+        "Joint Israeli-Palestinian organization of bereaved families transforming grief into dialogue and reconciliation.",
+      type: "Reports",
+      url: "https://www.theparentscircle.org/en/about_eng-2/",
+      status: "available",
+    },
+    {
+      title: "Mothers Call",
+      description:
+        "Cross-conflict campaign of Palestinian and Israeli women united for peace, freedom, and security for children.",
+      type: "Articles",
+      url: "https://mothers-call.org/",
+      status: "available",
+    },
+    {
+      title: "MADRE: Palestine",
+      description:
+        "MADRE's partnerships with Palestinian organizers for mental health, healthcare, and midwife-led reproductive advocacy.",
+      type: "Reports",
+      url: "https://www.madre.org/palestine/",
+      status: "available",
+    },
+    {
+      title: "Bring Them Home Now",
+      description:
+        "Hostages and Missing Families Forum advocacy for the safe return of hostages taken during the October 7 attacks.",
+      type: "Articles",
+      url: "https://bringthemhomenow.net/",
+      status: "available",
+    },
+    {
+      title: "Israeli Mothers — Hostage Advocacy Reference (PDF)",
+      description:
+        "Reference table of documented mothers in the Hostages and Missing Families Forum (#BringThemHomeNow), from scholarly research correspondence.",
       type: "Downloads",
-      status: "coming_soon",
+      url: "/documents/research/israeli-mothers-hostage-advocacy.pdf",
+      status: "available",
     },
   ] as MediaResource[],
 };
