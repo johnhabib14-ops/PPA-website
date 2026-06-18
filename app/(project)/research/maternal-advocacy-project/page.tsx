@@ -6,6 +6,7 @@ import { ResearchTeamCard } from "@/components/research/ResearchTeamCard";
 import { MediaResourceCard } from "@/components/research/MediaResourceCard";
 import { ResearchPhotoGallery } from "@/components/research/ResearchPhotoGallery";
 import { ResearchResourceLinks } from "@/components/research/ResearchResourceLinks";
+import { ResearchContentBlocks } from "@/components/research/ResearchContentBlocks";
 import {
   maternalAdvocacyProject,
   overview,
@@ -43,6 +44,79 @@ function PlaceholderFigure({ label, note }: { label: string; note: string }) {
       <figcaption>{label}</figcaption>
       <p className="research-figure__note">{note}</p>
     </figure>
+  );
+}
+
+function ResearchGroupContent({ group }: { group: (typeof researchGroups)[number] }) {
+  const isStacked = group.layout === "stacked";
+
+  if (isStacked) {
+    return (
+      <div className="research-stacked">
+        <div className="research-body">
+          <div className="text-block research-lead">
+            {group.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+          {group.quote ? (
+            <blockquote className="study-callout research-quote">
+              <p>{group.quote}</p>
+            </blockquote>
+          ) : null}
+          {group.blocks?.length ? <ResearchContentBlocks blocks={group.blocks} /> : null}
+        </div>
+        {group.photos?.length ? (
+          <div className="research-stacked__gallery">
+            <ResearchPhotoGallery photos={group.photos} />
+          </div>
+        ) : null}
+      </div>
+    );
+  }
+
+  return (
+    <div className="research-split">
+      <div className="research-body">
+        <div className="text-block research-lead">
+          {group.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+        {group.quote ? (
+          <blockquote className="study-callout research-quote">
+            <p>{group.quote}</p>
+          </blockquote>
+        ) : null}
+        {group.subsections?.length ? (
+          <div className="research-subsections-grid card-grid">
+            {group.subsections.map((sub, si) => (
+              <article key={si} className="construct-card">
+                {sub.title ? <h4>{sub.title}</h4> : null}
+                {sub.paragraphs.map((p, pi) => (
+                  <p key={pi}>{p}</p>
+                ))}
+              </article>
+            ))}
+          </div>
+        ) : null}
+        {group.collapsible ? (
+          <details className="research-collapsible">
+            <summary>{group.collapsible.title}</summary>
+            <div className="text-block">
+              {group.collapsible.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </details>
+        ) : null}
+      </div>
+      {group.photos?.length ? (
+        <ResearchPhotoGallery photos={group.photos} />
+      ) : group.placeholderLabel && group.placeholderNote ? (
+        <PlaceholderFigure label={group.placeholderLabel} note={group.placeholderNote} />
+      ) : null}
+    </div>
   );
 }
 
@@ -103,47 +177,7 @@ export default function MaternalAdvocacyProjectPage() {
           intro={group.intro}
           tone={gi % 2 === 0 ? "default" : "alt"}
         >
-          <div className="research-split">
-            <div className="research-body">
-              <div className="text-block research-lead">
-                {group.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-              {group.quote ? (
-                <blockquote className="study-callout research-quote">
-                  <p>{group.quote}</p>
-                </blockquote>
-              ) : null}
-              {group.subsections?.length ? (
-                <div className="research-subsections-grid card-grid">
-                  {group.subsections.map((sub, si) => (
-                    <article key={si} className="construct-card">
-                      {sub.title ? <h4>{sub.title}</h4> : null}
-                      {sub.paragraphs.map((p, pi) => (
-                        <p key={pi}>{p}</p>
-                      ))}
-                    </article>
-                  ))}
-                </div>
-              ) : null}
-              {group.collapsible ? (
-                <details className="research-collapsible">
-                  <summary>{group.collapsible.title}</summary>
-                  <div className="text-block">
-                    {group.collapsible.paragraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
-                  </div>
-                </details>
-              ) : null}
-            </div>
-            {group.photos?.length ? (
-              <ResearchPhotoGallery photos={group.photos} />
-            ) : group.placeholderLabel && group.placeholderNote ? (
-              <PlaceholderFigure label={group.placeholderLabel} note={group.placeholderNote} />
-            ) : null}
-          </div>
+          <ResearchGroupContent group={group} />
           {group.resourceLinks?.length ? (
             <div className="research-resources">
               <h3 className="research-resources__title">Further reading</h3>
@@ -156,7 +190,9 @@ export default function MaternalAdvocacyProjectPage() {
       {/* Our study */}
       <ResearchSection id="our-study" eyebrow={study.eyebrow} title={study.title} tone="alt">
         <div className="study-callout">
-          <p>{study.description}</p>
+          {study.description.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
 
         <div className="card-grid" style={{ marginTop: "var(--space-xl)" }}>

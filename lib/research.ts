@@ -108,13 +108,41 @@ export type ResearchSubsection = {
   paragraphs: string[];
 };
 
+export type ResearchContentBlock =
+  | { type: "card"; title?: string; paragraphs: string[] }
+  | {
+      type: "story";
+      title: string;
+      paragraphs: string[];
+      quote?: string;
+      photo?: ResearchPhoto;
+    }
+  | { type: "stats"; title?: string; items: { value: string; label: string }[] }
+  | { type: "bullets"; title?: string; intro?: string; items: string[] }
+  | {
+      type: "table";
+      title?: string;
+      attribution?: string;
+      columns: string[];
+      rows: string[][];
+    }
+  | {
+      type: "org";
+      title: string;
+      url: string;
+      paragraphs: string[];
+      bullets: string[];
+    };
+
 export type ResearchGroup = {
   id: string;
   eyebrow: string;
   title: string;
   intro: string;
   paragraphs: string[];
+  layout?: "split" | "stacked";
   subsections?: ResearchSubsection[];
+  blocks?: ResearchContentBlock[];
   collapsible?: ResearchSubsection;
   quote?: string;
   photos?: ResearchPhoto[];
@@ -122,6 +150,8 @@ export type ResearchGroup = {
   placeholderLabel?: string;
   placeholderNote?: string;
 };
+
+const UKRAINE_PHOTO_BASE = "/images/research/ukraine";
 
 const MADRES_PHOTO_BASE = "/images/research/madres-plaza-de-mayo-50th";
 
@@ -199,6 +229,7 @@ export const researchGroups: ResearchGroup[] = [
           "Placard bearing the name and photograph of a disappeared person, illustrating individualized remembrance.",
       },
     ],
+    layout: "split",
     resourceLinks: [
       {
         title: "Argentina, 1985",
@@ -213,6 +244,7 @@ export const researchGroups: ResearchGroup[] = [
     id: "october7",
     eyebrow: "Section 2",
     title: "Israeli Mothers After October 7",
+    layout: "stacked",
     intro:
       "Mothers advocating after the October 7 attacks, with attention to families affected by abduction, loss, and political violence.",
     paragraphs: [
@@ -220,25 +252,75 @@ export const researchGroups: ResearchGroup[] = [
     ],
     quote:
       "\u201cOur voices are excluded from the rooms where decisions are made for us and our children.\u201d \u2014 Mothers Call",
-    subsections: [
+    blocks: [
       {
+        type: "card",
         title: "Hostage advocacy after October 7",
         paragraphs: [
           "The Hostages and Missing Families Forum has coordinated sustained public appeals for the safe return of abducted family members. Mothers have worn photographs of loved ones, addressed media and international audiences, and demanded government action—exemplifying maternal advocacy under conditions of abduction, uncertainty, and political violence.",
         ],
       },
       {
+        type: "table",
         title: "Named advocates",
-        paragraphs: [
-          "Documented public faces of hostage advocacy include Rachel Goldberg-Polin (son Hersh Goldberg-Polin); Shira Albag (daughter Liri Albag); Keren Schem (daughter Mia Schem); Simona Steinbrecher (daughter Agam Steinbrecher); Nitza Korngold (son Tal Shoham); Shelly Shem-Tov (son Omer Shem-Tov); Hagit Chen (son Itay Chen); Yael Adar (son Tamir Adar); Varda Ben Baruch (grandson Edan Alexander); Niva Wenkert (daughter Agam Berger); Ruty Strum (sons Iair and Eitan Horn); and Osnat Sharabi (brothers Eli and Yossi Sharabi).",
+        attribution:
+          "Compiled from correspondence with Dr. Edward Dunbar, UCLA. Status notes reflect publicly reported information as of the source correspondence.",
+        columns: ["Mother", "Hostage / relationship", "Status"],
+        rows: [
+          ["Rachel Goldberg-Polin", "Son Hersh Goldberg-Polin", "Killed in captivity, Aug. 2024"],
+          ["Shira Albag", "Daughter Liri Albag", "Soldier, released 2025"],
+          ["Keren Schem", "Daughter Mia Schem", "Released Nov. 2023"],
+          ["Simona Steinbrecher", "Daughter Agam Steinbrecher", "—"],
+          ["Nitza Korngold", "Son Tal Shoham", "Released 2025"],
+          ["Shelly Shem-Tov", "Son Omer Shem-Tov", "Released 2025"],
+          ["Hagit Chen", "Son Itay Chen", "Killed in captivity"],
+          ["Yael Adar", "Son Tamir Adar", "Body held in Gaza"],
+          ["Varda Ben Baruch", "Grandson Edan Alexander", "—"],
+          ["Niva Wenkert", "Daughter Agam Berger", "—"],
+          ["Ruty Strum", "Sons Iair & Eitan Horn", "—"],
+          ["Osnat Sharabi", "Brothers Eli & Yossi Sharabi", "—"],
         ],
       },
       {
-        title: "Cross-conflict bereavement and peace",
+        type: "org",
+        title: "Parents Circle – Families Forum",
+        url: "https://www.theparentscircle.org/en/about_eng-2/",
         paragraphs: [
-          "The Parents Circle – Families Forum (PCFF) is a joint Israeli-Palestinian organization of more than 800 bereaved families who have lost immediate relatives to the conflict. Founded in 1995, members choose to transform private grief into dialogue, reconciliation, and public education.",
-          "Mothers Call unites Palestinian and Israeli women for peace, freedom, equality, and security for children. The campaign grew from a partnership between Women of the Sun (Palestinian) and Women Wage Peace (Israeli), signed in 2022. It has been nominated for the 2025 Nobel Peace Prize and was a 2024 Sakharov Prize finalist.",
-          "MADRE partners with local Palestinian organizers to deliver mental health support, healthcare, and clean water amid occupation. Its \"Resist In Body\" program brings Palestinian and Israeli midwives together to demand an end to occupation policies that block reproductive healthcare in the West Bank.",
+          "The Parents Circle – Families Forum (PCFF) is a joint Israeli-Palestinian organization of over 800 bereaved Palestinians and Israelis who have lost an immediate family member to the ongoing conflict. Despite profound grief, members have chosen to transform their pain into a force for reconciliation, dialogue, and peace.",
+          "Founded in 1995 by bereaved father Yitzhak Frankenthal, PCFF provides a space for bereaved Israelis and Palestinians to share personal stories, understand each other's narratives, and recognize the humanity of the \"other.\" Since October 7, 2023, the organization has adapted its educational and public programs for schools, communities, and international audiences.",
+        ],
+        bullets: [
+          "Joint Palestinian-Israeli board and professional team; offices in Beit Jala and Ramat Ef'al",
+          "Outreach through schools, communities, and media to amplify bereaved families' moral voices",
+          "Vision of two nations living side by side in freedom, dignity, and security",
+        ],
+      },
+      {
+        type: "org",
+        title: "Mothers Call",
+        url: "https://mothers-call.org/",
+        paragraphs: [
+          "Mothers Call unites Palestinian and Israeli women from all walks of life in a shared human desire for peace, freedom, equality, rights, and security for children and future generations. The campaign grew from a partnership between Women of the Sun (Palestinian) and Women Wage Peace (Israeli), signed in 2022.",
+          "The Barefoot Walk for Peace campaign has brought Palestinian and Israeli mothers together in public solidarity, demanding that leaders listen and return to negotiations with a determined commitment to a political solution within a limited timeframe.",
+        ],
+        bullets: [
+          "Nominated for the 2025 Nobel Peace Prize; among finalists for the 2024 Sakharov Prize",
+          "Recognized with the DVF Award for Women's Leadership and the Günter Wallraff Prize",
+          "Pope Francis signed the Mothers' Call; featured in Time Magazine Women of the Year 2024",
+        ],
+      },
+      {
+        type: "org",
+        title: "MADRE: Palestine",
+        url: "https://www.madre.org/palestine/",
+        paragraphs: [
+          "MADRE partners with local Palestinian organizers to deliver emergency medical care, psychosocial support, fuel, food, hygiene supplies, and clean water as attacks devastate hospitals and communities. Its decades of work in Palestine and long-term relationships with local organizers allow relief to reach those most in need despite blockades and siege conditions.",
+          "MADRE upholds that lasting peace and justice can only come from an end to occupation and apartheid policies that have deprived Palestinians for generations—and that have made peace impossible for Israelis and Palestinians alike.",
+        ],
+        bullets: [
+          "81,000 children provided with mental health and psychological support services",
+          "Over 300,000 people in Gaza provided with emergency response, triage, and referral services",
+          "Resist In Body: Palestinian and Israeli midwives demand an end to occupation policies blocking reproductive healthcare in the West Bank",
         ],
       },
     ],
@@ -292,6 +374,7 @@ export const researchGroups: ResearchGroup[] = [
     id: "ukraine",
     eyebrow: "Section 3",
     title: "Ukrainian Mothers",
+    layout: "stacked",
     intro:
       "Mothers affected by war, displacement, child abduction, family separation, and political violence.",
     paragraphs: [
@@ -299,27 +382,121 @@ export const researchGroups: ResearchGroup[] = [
     ],
     quote:
       "\u201cIt\u2019s very important not to be strong alone.\u201d \u2014 Lidiya, Kharkiv (via HIAS)",
-    subsections: [
+    blocks: [
       {
+        type: "card",
         title: "Child abduction during the war",
         paragraphs: [
           "From the earliest months of Russia's full-scale invasion, international monitors documented the systematic removal of Ukrainian children from occupied territories. Investigations found coordinated state-run programs—not temporary wartime relocations—involving passport changes, illegal adoption, \"re-education,\" and obstruction of family reunification. In March 2023, the ICC issued arrest warrants citing evidence that deportations were systematic and directed at the highest levels of government.",
         ],
       },
       {
-        title: "International legal response",
-        paragraphs: [
-          "On December 3, 2025, the UN General Assembly adopted a resolution demanding Russia immediately return all forcibly taken Ukrainian children and cease practices of citizenship change, illegal adoption, and transfer to Russian families. Ukrainian prosecutors have verified 19,546 deported or forcibly relocated children; as of late 2025, only 1,876 have returned home—underscoring the urgency of international pressure and family-led advocacy.",
+        type: "stats",
+        title: "Scale of the tragedy (Office of the Prosecutor General of Ukraine)",
+        items: [
+          { value: "19,546", label: "Children verified as deported or forcibly relocated" },
+          { value: "661", label: "Children killed as a result of armed aggression" },
+          { value: "2,200+", label: "Children injured of varying severity" },
+          { value: "1,876", label: "Children who have returned home" },
+          { value: "5,363", label: "Criminal proceedings regarding crimes against children" },
+          { value: "91", label: "States supporting the Dec. 3, 2025 UN General Assembly resolution" },
         ],
       },
       {
-        title: "Humanitarian recovery",
-        paragraphs: [
-          "Humanitarian organizations including HIAS and local partners operate mobile brigades and safe spaces near the frontlines, providing mental health support, violence prevention, and economic assistance to displaced mothers and children. Partners include Power of a Woman, Angels of Salvation, and the Kherson \"Successful Woman\" center, funded in part by the German Federal Foreign Office.",
-          "As Roma mother Anna* reflected after receiving dignity kits: \"I felt cared for. We are usually ignored, and no one ever asks if we need support.\"",
+        type: "bullets",
+        title: "What the UN resolution demands of Russia",
+        intro:
+          "On December 3, 2025, during the 11th emergency special session, the UN General Assembly adopted a resolution titled \"Return of Ukrainian Children,\" establishing a clear international legal framework for further action.",
+        items: [
+          "Immediately and unconditionally return all Ukrainian children that Russia has forcibly taken",
+          "Cease practices of changing citizenship, illegal adoption, and transferring children to Russian families—actions defined by international law as attempts to destroy their national identity",
         ],
       },
       {
+        type: "bullets",
+        title: "International access to information",
+        intro:
+          "For the first time at the level of the UN Secretary-General, the necessity has been established to provide international access to information about illegally relocated children, including their whereabouts, health status, and conditions of detention.",
+        items: [
+          "Access to information is critically important—it is impossible to return a child without knowing where they are and in what condition",
+          "Countries unequivocally recognize deportation of children as a war crime with no statute of limitations",
+        ],
+      },
+      {
+        type: "bullets",
+        title: "Role of the Prosecutor's Office of Ukraine",
+        items: [
+          "Document the war crime of deportation, recording facts of relocation, changes of citizenship, and illegal adoption",
+          "Form an evidentiary base submitted to the International Criminal Court and international partners",
+          "Identify children and establish their routes of relocation, cooperating with foreign law enforcement agencies and international organizations",
+          "Ensure international coordination, constantly raising the issue of deportations in meetings with international colleagues",
+          "Create legal grounds for pressure on the Russian Federation, using the resolution as an international tool",
+        ],
+      },
+      {
+        type: "card",
+        title: "Humanitarian recovery near the frontlines",
+        paragraphs: [
+          "Since the full-scale war broke out in February 2022, 5.6 million Ukrainians have been forced to flee Ukraine, and 3.7 million more have been uprooted within the country. Through it all, HIAS and local partners—funded in part by the German Federal Foreign Office—have supported displaced Ukrainians with counseling, art therapy, violence prevention, legal support, trauma interventions, economic assistance, and basic supplies near shifting frontlines.",
+          "Partners include Power of a Woman, Angels of Salvation, and the Kherson Regional Center \"Successful Woman,\" helping displaced mothers and children find safety, recover from the effects of war, and begin to rebuild their lives.",
+        ],
+      },
+      {
+        type: "story",
+        title: "Inna and Zhanna",
+        paragraphs: [
+          "Sisters from Kherson who have always faced challenges together. They first came to the Successful Woman safe space simply looking for a moment of rest—to charge their phones, regain calm, and speak with people who understood what they were going through.",
+          "The safe space became much more than a temporary refuge. They joined group activities, completed a mental health care course, and enrolled in a sewing and tailoring program, imagining a future where they could open a small sewing studio together. When shelling reached their neighborhood, they evacuated in tears, having lost their home and belongings. With support from the project, they received a sewing machine and overlock equipment; Inna has already sewn her first garment and begun taking small orders—stitching hope back into their future.",
+        ],
+      },
+      {
+        type: "story",
+        title: "Lidiya",
+        paragraphs: [
+          "On the first day of the war, 77-year-old Lidiya was in a hospital in Kharkiv with her granddaughter. She remembers sirens, ambulances, and fire trucks as panic spread through the city. Since early 2023, she has participated in trainings run by Angels of Salvation mobile teams, which travel across the Kharkiv region providing mental health support during the war.",
+          "For Lidiya, the sessions are \"a breath of fresh air.\" Participants reflect, share experiences, and use creative tools such as drawing, writing, or poetry. Inspired by these activities, Lidiya has returned to writing poetry—a pastime she loved when she was younger. This support is especially vital for older adults with limited access to mental health services.",
+        ],
+        quote:
+          "\u201cLife goes on. We\u2019ve learned to be strong. But it\u2019s very important not to be strong alone.\u201d",
+        photo: {
+          src: `${UKRAINE_PHOTO_BASE}/lidiya-art-therapy-angels-of-salvation.jpg`,
+          alt: "Lidiya attends a group art therapy session led by HIAS partner Angels of Salvation in Ukraine.",
+          caption:
+            "Lidiya at a group art therapy session led by Angels of Salvation, funded by the German Federal Foreign Office (HIAS).",
+        },
+      },
+      {
+        type: "story",
+        title: "Sofia",
+        paragraphs: [
+          "Fifteen-year-old Sofia left a violence prevention training with a new sense of clarity and confidence. The session was led by Power of a Woman (PoW), and it opened her eyes to issues she had only partially understood before—including harassment, online abuse, unhealthy friendships, and stereotypes passed from one generation to the next.",
+          "Facilitators explained different forms of violence and the importance of personal boundaries and consent. When Sofia raised a question about self-worth, the team's psychologist held up a 200-hryvnia bill, crumpled it, stepped on it, and asked whether its value had changed. Sofia reflected: \"I will remember this example for the rest of my life… What matters is knowing who you are and valuing yourself.\"",
+        ],
+        photo: {
+          src: `${UKRAINE_PHOTO_BASE}/sofia-violence-prevention-pow.jpg`,
+          alt: "Sofia and classmates attend a violence prevention workshop led by HIAS partner Power of a Woman in Ukraine.",
+          caption:
+            "Sofia and classmates at a violence prevention workshop led by Power of a Woman, funded by the German Federal Foreign Office (HIAS).",
+        },
+      },
+      {
+        type: "story",
+        title: "Anna*",
+        paragraphs: [
+          "A 40-year-old mother of three from the Roma community, Anna* has faced many obstacles throughout her life. She had limited opportunities to attend school and cannot read or write. Before the war, she found seasonal work helping small farmers, but many opportunities disappeared as businesses left the region.",
+          "Power of a Woman provided essential supplies and access to trainings on preventing and responding to violence. The dignity kit she received significantly improved her access to hygiene products and living conditions. Through awareness sessions, she also learned about various forms of violence and steps to take when she or others encounter it. *Name changed for safety.",
+        ],
+        quote:
+          "\u201cI felt cared for. We are usually ignored, and no one ever asks if we need support. We felt that we are not alone, that someone truly cares about us.\u201d",
+        photo: {
+          src: `${UKRAINE_PHOTO_BASE}/anna-violence-prevention-pow.jpg`,
+          alt: "Anna attends a violence prevention workshop led by HIAS partner Power of a Woman in Ukraine.",
+          caption:
+            "Anna* at a violence prevention workshop led by Power of a Woman, funded by the German Federal Foreign Office (HIAS). Name changed for safety.",
+        },
+      },
+      {
+        type: "card",
         title: "Family reunification organizations",
         paragraphs: [
           "Save Ukraine organizes cross-border rescue missions, working directly with mothers and grandmothers who travel into Russia or occupied territories to recover their children. The Association of Families of Deported Children provides testimony and legal evidence to the ICC, UN, and Ukrainian prosecutors—functioning similarly to historical mothers' human-rights groups, adapted to wartime conditions.",
@@ -328,10 +505,28 @@ export const researchGroups: ResearchGroup[] = [
     ],
     photos: [
       {
-        src: "/images/research/ukraine/hias-mobile-brigade-dnipro.png",
+        src: `${UKRAINE_PHOTO_BASE}/hias-mobile-brigade-dnipro.png`,
         alt: "Ukrainian mothers and children at a HIAS mobile social assistance brigade in Dnipropetrovsk region.",
         caption:
           "Mothers and children at a HIAS mobile social assistance brigade in Dnipropetrovsk region.",
+      },
+      {
+        src: `${UKRAINE_PHOTO_BASE}/lidiya-art-therapy-angels-of-salvation.jpg`,
+        alt: "Lidiya attends a group art therapy session led by HIAS partner Angels of Salvation in Ukraine.",
+        caption:
+          "Lidiya at a group art therapy session led by Angels of Salvation (HIAS).",
+      },
+      {
+        src: `${UKRAINE_PHOTO_BASE}/sofia-violence-prevention-pow.jpg`,
+        alt: "Sofia and classmates attend a violence prevention workshop led by HIAS partner Power of a Woman in Ukraine.",
+        caption:
+          "Sofia and classmates at a violence prevention workshop led by Power of a Woman (HIAS).",
+      },
+      {
+        src: `${UKRAINE_PHOTO_BASE}/anna-violence-prevention-pow.jpg`,
+        alt: "Anna attends a violence prevention workshop led by HIAS partner Power of a Woman in Ukraine.",
+        caption:
+          "Anna* at a violence prevention workshop led by Power of a Woman (HIAS). Name changed for safety.",
       },
     ],
     resourceLinks: [
@@ -384,8 +579,11 @@ export const researchGroups: ResearchGroup[] = [
 export const study = {
   eyebrow: "Section 4",
   title: "Our Study",
-  description:
-    "The study strategies seek to provide a greater understanding of forms of maternal advocacy found in cases of disappeared family members, including adult-aged children, by repressive political regimes. Consistent with Orozco Mendoza's (2026) observation, this maternal contract is an organic response of mothers and other caregivers to the persecution and frequent homicides of young persons with opposing political views to the standing regime. These efforts of advocacy and defiance are in response to regimes that abandon their care for marginalized members of society. This project uses content analysis of interviews with two sample populations of mothers whose children were victimized by political violence.",
+  description: [
+    "The study strategies seek to provide a greater understanding of forms of maternal advocacy found in cases of disappeared family members, including adult-aged children, by repressive political regimes.",
+    "Consistent with Orozco Mendoza's (2026) observation, this maternal contract is an organic response of mothers and other caregivers to the persecution and frequent homicides of young persons with opposing political views to the standing regime. These efforts of advocacy and defiance are in response to regimes that abandon their care for marginalized members of society.",
+    "This project uses content analysis of interviews with two sample populations of mothers whose children were victimized by political violence.",
+  ],
   groups: [
     {
       label: "Group 1",
