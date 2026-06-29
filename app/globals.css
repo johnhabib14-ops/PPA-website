@@ -1834,8 +1834,12 @@ a:hover {
 
 /* Research sections (project page) — rendered as full-bleed bands */
 .research-section__head {
-  max-width: 60ch;
+  max-width: none;
   margin-bottom: var(--space-xl);
+}
+
+.research-section .lead {
+  max-width: 85ch;
 }
 
 .research-section__head .section-title {
@@ -1876,12 +1880,12 @@ a:hover {
 }
 
 .research-lead {
-  max-width: 65ch;
+  max-width: 85ch;
 }
 
 .research-quote {
   margin: 0;
-  max-width: 65ch;
+  max-width: 85ch;
 }
 
 .research-subsections-grid {
@@ -1972,6 +1976,21 @@ a:hover {
   gap: var(--space-xl);
 }
 
+@media (min-width: 900px) {
+  .research-blocks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .research-blocks > .research-block-card:first-child,
+  .research-blocks > div:has(.research-advocate-table-wrap),
+  .research-blocks > div:has(.research-stat-grid),
+  .research-blocks > div:has(.research-story-card__media) {
+    grid-column: 1 / -1;
+  }
+}
+
 .research-block-card p + p {
   margin-top: var(--space-md);
 }
@@ -2036,7 +2055,6 @@ a:hover {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
-  max-width: 65ch;
 }
 
 .research-story-card__body p + p {
@@ -2136,7 +2154,6 @@ a:hover {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
-  max-width: 70ch;
 }
 
 .research-bullet-block__list {
@@ -2238,7 +2255,6 @@ a:hover {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
-  max-width: 70ch;
 }
 
 .research-org-profile p + p {
