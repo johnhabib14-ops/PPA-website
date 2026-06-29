@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { DarkHero } from "@/components/research/DarkHero";
 import { ResearchSection } from "@/components/research/ResearchSection";
 import { GraphPlaceholderCard } from "@/components/research/GraphPlaceholderCard";
@@ -10,6 +11,7 @@ import { ResearchContentBlocks } from "@/components/research/ResearchContentBloc
 import {
   maternalAdvocacyProject,
   overview,
+  researchFoundations,
   researchGroups,
   study,
   findings,
@@ -167,6 +169,80 @@ export default function MaternalAdvocacyProjectPage() {
         </ul>
       </ResearchSection>
 
+      {/* Research foundations */}
+      <ResearchSection
+        id="research-foundations"
+        eyebrow={researchFoundations.eyebrow}
+        title={researchFoundations.title}
+        intro={researchFoundations.intro}
+      >
+        <div className="foundation-layout">
+          <figure className="foundation-figure">
+            <Image
+              src={researchFoundations.image.src}
+              alt={researchFoundations.image.alt}
+              width={682}
+              height={1024}
+              sizes="(min-width: 900px) 20rem, 60vw"
+              className="foundation-figure__image"
+            />
+            <figcaption className="foundation-figure__caption">
+              {researchFoundations.image.caption}
+            </figcaption>
+          </figure>
+
+          <ul className="resource-links foundation-cards">
+            {researchFoundations.cards.map((card) => (
+              <li key={card.title}>
+                <article className="resource-link-card">
+                  <h3 className="resource-link-card__title">{card.title}</h3>
+                  {card.body.map((p, i) => (
+                    <p key={i} className="resource-link-card__summary">
+                      {p}
+                    </p>
+                  ))}
+                  <p className="resource-link-card__source foundation-card__citation">{card.citation}</p>
+                  <div className="foundation-card__links">
+                    {card.links.map((link) => (
+                      <a
+                        key={link.url}
+                        className="resource-link-card__link"
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.label}
+                        <span className="sr-only"> (opens in new tab)</span>
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="research-resources">
+          <h3 className="research-resources__title">Sources and further reading</h3>
+          <ul className="source-list">
+            {researchFoundations.sources.map((source) => (
+              <li key={source.url} className="source-list__item">
+                <span className="source-list__citation">{source.citation}</span>{" "}
+                <a
+                  className="source-list__link"
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {source.label}
+                  <span className="sr-only"> (opens in new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ResearchSection>
+
       {/* Three group sections */}
       {researchGroups.map((group, gi) => (
         <ResearchSection
@@ -221,7 +297,7 @@ export default function MaternalAdvocacyProjectPage() {
 
         <h3 style={{ marginTop: "var(--space-3xl)" }}>{study.keyConstructs.title}</h3>
         <p className="section-intro">{study.keyConstructs.intro}</p>
-        <div className="card-grid card-grid--thirds" style={{ marginTop: "var(--space-lg)" }}>
+        <div className="card-grid" style={{ marginTop: "var(--space-lg)" }}>
           {study.keyConstructs.items.map((item) => (
             <article key={item.title} className="construct-card">
               <h4>{item.title}</h4>

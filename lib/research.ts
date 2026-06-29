@@ -26,6 +26,7 @@ export type ResearchNavLink = { label: string; href: string };
 
 export const maternalAdvocacyNav: ResearchNavLink[] = [
   { label: "Overview", href: "#overview" },
+  { label: "Research Foundations", href: "#research-foundations" },
   { label: "Madres de Plaza de Mayo", href: "#madres" },
   { label: "Israeli Mothers", href: "#october7" },
   { label: "Ukrainian Mothers", href: "#ukraine" },
@@ -88,6 +89,99 @@ export const overview = {
     "Political Violence",
     "State Violence",
   ],
+};
+
+export type FoundationCard = {
+  title: string;
+  body: string[];
+  citation: string;
+  links: { label: string; url: string }[];
+};
+
+export type FoundationSource = {
+  citation: string;
+  url: string;
+  label: string;
+};
+
+export const researchFoundations = {
+  eyebrow: "Research Foundations",
+  title: "Research Foundations",
+  intro:
+    "Two sources anchor this project: a political-theory framework for understanding maternal advocacy, and a historical account of why family testimony and public memory remain necessary. Together they ground how we study the language of mothers and relatives confronting state violence and disappearance.",
+  image: {
+    src: "/images/research/maternal-contract/mother-and-children-embrace.png",
+    alt: "Charcoal-style portrait of a mother holding two children close, all with closed eyes, evoking grief, protection, and remembrance.",
+    caption: "A contextual artwork evoking maternal care, grief, and remembrance.",
+  },
+  cards: [
+    {
+      title: "The Maternal Contract",
+      body: [
+        "Political theorist Elva F. Orozco Mendoza describes a \u201cmaternal contract\u201d: when official institutions abandon, blame, or fail to protect people harmed by state violence, disappearance, imprisonment, feminicide, or structural neglect, mothers and relatives step forward as political and moral actors.",
+        "Their advocacy becomes a collective care structure. Organizing together, they perform some of the searching, documenting, witnessing, recognition, memory, and justice functions that institutions failed to provide \u2014 without the state\u2019s resources or authority.",
+        "This framework directly informs our study of mothers and relatives of people who were disappeared, abducted, imprisoned, or politically targeted, and how their testimony gives voice to loss and demands accountability.",
+      ],
+      citation:
+        "Elva F. Orozco Mendoza, The Maternal Contract: A Subaltern Response to Extreme Violence in the Americas, Oxford University Press / Oxford Academic, 2025.",
+      links: [
+        {
+          label: "Read the Oxford Academic source",
+          url: "https://academic.oup.com/book/61436/chapter/534736169",
+        },
+      ],
+    },
+    {
+      title: "The Disappeared: What Was Known and What Remains Unknown",
+      body: [
+        "Historian Emilio Crenzel describes how knowledge of Argentina\u2019s system of disappearance was fragmentary and uneven during the dictatorship. Understanding was assembled gradually \u2014 by relatives, survivors, human-rights groups, exiles, journalists, and political organizations piecing evidence together over time.",
+        "Many questions remain unresolved, including the fate of the disappeared, the children taken from their families, and the full social and political architecture of state terror.",
+        "This is why maternal and family testimony matters as a source of memory, documentation, and public accountability \u2014 often preserving knowledge that official records omitted or suppressed.",
+      ],
+      citation:
+        "Emilio Crenzel, \u201cThe disappeared: What we knew and what we still don\u2019t,\u201d Buenos Aires Herald, May 4, 2026.",
+      links: [
+        {
+          label: "Read the Buenos Aires Herald article",
+          url: "https://buenosairesherald.com/op-ed/the-disappeared-what-we-knew-and-what-we-still-dont",
+        },
+      ],
+    },
+    {
+      title: "Why Maternal Advocacy Matters",
+      body: [
+        "Read together, these sources frame the project. The maternal contract offers a theoretical lens for understanding how mothers and relatives become advocates when institutions abandon victims.",
+        "Argentina\u2019s history of disappearance shows, in concrete terms, why family testimony and public memory remain necessary long after the violence \u2014 because so much was never officially recorded or acknowledged.",
+        "Together they support the project\u2019s aim: to study how mothers and relatives transform grief, uncertainty, and institutional abandonment into sustained advocacy, documentation, and the pursuit of justice.",
+      ],
+      citation:
+        "Synthesis of Orozco Mendoza (2025) and Crenzel (2026); full citations below.",
+      links: [
+        {
+          label: "Read the Oxford Academic source",
+          url: "https://academic.oup.com/book/61436/chapter/534736169",
+        },
+        {
+          label: "Read the Buenos Aires Herald article",
+          url: "https://buenosairesherald.com/op-ed/the-disappeared-what-we-knew-and-what-we-still-dont",
+        },
+      ],
+    },
+  ] as FoundationCard[],
+  sources: [
+    {
+      citation:
+        "Orozco Mendoza, Elva F. The Maternal Contract: A Subaltern Response to Extreme Violence in the Americas. Oxford University Press / Oxford Academic, 2025.",
+      url: "https://global.oup.com/academic/product/the-maternal-contract-9780197808252?cc=us&lang=en&",
+      label: "Oxford University Press",
+    },
+    {
+      citation:
+        "Crenzel, Emilio. \u201cThe disappeared: What we knew and what we still don\u2019t.\u201d Buenos Aires Herald, May 4, 2026.",
+      url: "https://buenosairesherald.com/op-ed/the-disappeared-what-we-knew-and-what-we-still-dont",
+      label: "Buenos Aires Herald",
+    },
+  ] as FoundationSource[],
 };
 
 export type ResearchResourceLink = {
@@ -165,12 +259,12 @@ export const researchGroups: ResearchGroup[] = [
     paragraphs: [
       "The Madres de Plaza de Mayo are an association of Argentine mothers who came together to seek information about their children who were forcibly disappeared during the period of military dictatorship. Gathering publicly, they transformed private grief into sustained, visible advocacy—an organic response of mothers and other caregivers to the persecution and frequent homicides of young persons with opposing political views to the standing regime.",
       "Their weekly presence in the Plaza de Mayo became an enduring act of remembrance and public testimony. Through peaceful assembly and persistent demands for truth, they advanced the cause of accountability and resisted authoritarian violence. The advocacy of mothers served as a contrary form of support that regimes had abdicated toward marginalized members of society.",
+      "Their transformation from individual grieving mothers into a coordinated human-rights movement exemplifies what scholars describe as \"contentious motherhood\"—the politicization of maternal identity under authoritarian rule (Feijóo & Nari, 1996; Bosco, 2006). The Mothers' founding nucleus—Azucena Villaflor, Esther Ballestrino de Careaga, María Ponce de Bianco, Josefina García de Noia, Mirta Acuña de Baravalle, and Hebe de Bonafini—constituted a heterogeneous but structurally coherent group whose activism redefined the boundaries of the possible under state terror.",
     ],
     collapsible: {
       title: "Founding mothers and contentious motherhood",
       paragraphs: [
-        "The founding mothers of the Plaza de Mayo emerged from a political environment defined by the Argentine junta's systematic use of enforced disappearance as a mechanism of social control during the Proceso. Their transformation from individual grieving mothers into a coordinated human-rights movement exemplifies what scholars describe as \"contentious motherhood\"—the politicization of maternal identity under authoritarian rule (Feijóo & Nari, 1996; Bosco, 2006).",
-        "The Mothers' founding nucleus—Azucena Villaflor, Esther Ballestrino de Careaga, María Ponce de Bianco, Josefina García de Noia, Mirta Acuña de Baravalle, and Hebe de Bonafini—constituted a heterogeneous but structurally coherent group whose activism redefined the boundaries of the possible under state terror.",
+        "The founding mothers of the Plaza de Mayo emerged from a political environment defined by the Argentine junta's systematic use of enforced disappearance as a mechanism of social control during the Proceso.",
         "The founding mothers were not professional activists. Most came from working-class or lower-middle-class households, with limited prior political engagement. Working-class women like Azucena Villaflor had deep ties to Peronist labor networks, which provided both a political vocabulary and a sense of collective agency. Educated migrants like Esther Ballestrino brought ideological sophistication, including Marxist and anti-imperialist frameworks, which shaped the group's early discourse. Mothers from the provinces like María Ponce de Bianco embodied the demographic shifts of mid-century Argentina, linking the Madres to broader patterns of urbanization, gender equity, and social mobility. This diversity of maternal advocacy produced a shared identity rooted in motherhood but shaped by distinct class, ideological, and regional trajectories.",
       ],
     },
@@ -617,27 +711,23 @@ export const study = {
   keyConstructs: {
     title: "Key Constructs",
     intro:
-      "The analysis is organized around several core constructs. Descriptions below are placeholders and can be refined as the work develops.",
+      "The analysis is organized around several core constructs that guide how we read maternal testimony and advocacy language.",
     items: [
       {
-        title: "Motherhood",
-        body: "Mothers and other caregivers who raised children and supported families became political and moral actors through advocacy—a maternal identity politicized under authoritarian rule and wartime conditions. The study examines how motherhood is expressed in testimony, including caregiving, demands for recognition, and sustained public appeals on behalf of children and family.",
+        title: "Ambiguous loss",
+        body: "Mothers and relatives often face disappearance, abduction, or political targeting without confirmation of death or return. The study examines how testimony expresses the uncertainty, searching, and suspended grief that characterize ambiguous loss amid state violence.",
       },
       {
-        title: "Political Violence",
-        body: "Political violence shapes the contexts in which maternal advocacy emerges, including enforced disappearance, abduction, deportation, displacement, and state-led programs of family separation. The analysis attends to how testimony reflects conditions of authoritarian control and armed conflict.",
+        title: "Measurement of political trauma",
+        body: "Political trauma shapes the contexts in which maternal advocacy emerges. Using LIWC and related linguistic measures, the analysis attends to how language reflects distress, loss, and the psychological impact of authoritarian control, armed conflict, and enforced disappearance.",
       },
       {
-        title: "LIWC Validity and Utility",
-        body: "Placeholder description of why LIWC is a valid and useful tool for analyzing testimony, including its grounding in psychological research and its applicability to advocacy language.",
+        title: "Forms of advocacy",
+        body: "Maternal advocacy takes varied forms—public testimony, assembly, documentation, appeals to institutions, and collective organizing. The study compares how mothers and relatives give voice to loss, demand accountability, and sustain hope across distinct political and historical settings.",
       },
       {
-        title: "Trauma",
-        body: "Placeholder description of trauma as expressed through language, including markers of distress, loss, and the psychological impact of political violence.",
-      },
-      {
-        title: "Resilience",
-        body: "Placeholder description of resilience, including expressions of hope, endurance, collective support, and sustained advocacy in the face of adversity.",
+        title: "Defining the identity of the maternal conflict",
+        body: "Under authoritarian rule and wartime conditions, maternal identity can become politicized—a form of contentious motherhood in which caregiving and moral authority are mobilized for recognition, protection, and justice. The analysis examines how that identity is expressed and contested in advocacy language.",
       },
     ],
   },
