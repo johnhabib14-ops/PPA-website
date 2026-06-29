@@ -26,96 +26,16 @@ export const maternalAdvocacyProject = {
 
 export type ResearchNavLink = { label: string; href: string };
 
-export const maternalAdvocacyRoutes = {
-  hub: maternalAdvocacyBase,
-  foundations: `${maternalAdvocacyBase}/foundations`,
-  madres: `${maternalAdvocacyBase}/madres`,
-  israel: `${maternalAdvocacyBase}/israel`,
-  ukraine: `${maternalAdvocacyBase}/ukraine`,
-  study: `${maternalAdvocacyBase}/study`,
-  findings: `${maternalAdvocacyBase}/findings`,
-  media: `${maternalAdvocacyBase}/media`,
-} as const;
-
 export const maternalAdvocacyNav: ResearchNavLink[] = [
-  { label: "Overview", href: maternalAdvocacyRoutes.hub },
-  { label: "Research Foundations", href: maternalAdvocacyRoutes.foundations },
-  { label: "Madres de Plaza de Mayo", href: maternalAdvocacyRoutes.madres },
-  { label: "Israeli Mothers", href: maternalAdvocacyRoutes.israel },
-  { label: "Ukrainian Mothers", href: maternalAdvocacyRoutes.ukraine },
-  { label: "Our Study", href: maternalAdvocacyRoutes.study },
-  { label: "Findings", href: maternalAdvocacyRoutes.findings },
-  { label: "Media", href: maternalAdvocacyRoutes.media },
-];
-
-export type RegionPageLink = { label: string; href: string };
-
-export const regionPages: RegionPageLink[] = [
-  { label: "Madres de Plaza de Mayo", href: maternalAdvocacyRoutes.madres },
-  { label: "Israeli Mothers After October 7", href: maternalAdvocacyRoutes.israel },
-  { label: "Ukrainian Mothers", href: maternalAdvocacyRoutes.ukraine },
-];
-
-export type HubEntryCard = {
-  eyebrow: string;
-  title: string;
-  description: string;
-  href: string;
-};
-
-export const hubRegionCards: HubEntryCard[] = [
-  {
-    eyebrow: "Section 1",
-    title: "Madres de Plaza de Mayo",
-    description:
-      "Mothers who transformed private grief into coordinated advocacy during Argentina's Proceso, demanding truth for disappeared children.",
-    href: maternalAdvocacyRoutes.madres,
-  },
-  {
-    eyebrow: "Section 2",
-    title: "Israeli Mothers After October 7",
-    description:
-      "Mothers advocating after the October 7 attacks, including families affected by abduction, loss, and political violence.",
-    href: maternalAdvocacyRoutes.israel,
-  },
-  {
-    eyebrow: "Section 3",
-    title: "Ukrainian Mothers",
-    description:
-      "Mothers confronting wartime child abduction, forced transfer, and family separation—and organizing for reunification and accountability.",
-    href: maternalAdvocacyRoutes.ukraine,
-  },
-];
-
-export const hubSupportCards: HubEntryCard[] = [
-  {
-    eyebrow: "Research Foundations",
-    title: "Theoretical & historical grounding",
-    description:
-      "The maternal contract framework and Argentina's history of disappearance anchor how we study family testimony and advocacy.",
-    href: maternalAdvocacyRoutes.foundations,
-  },
-  {
-    eyebrow: "Section 4",
-    title: "Our Study",
-    description:
-      "Comparative content analysis of maternal testimony using LIWC linguistic measures of trauma, resilience, and advocacy.",
-    href: maternalAdvocacyRoutes.study,
-  },
-  {
-    eyebrow: "Section 5",
-    title: "Graphs and Findings",
-    description:
-      "Planned LIWC visualizations comparing emotional tone, cognitive processing, and advocacy language across study groups.",
-    href: maternalAdvocacyRoutes.findings,
-  },
-  {
-    eyebrow: "Section 6",
-    title: "Media Resources",
-    description:
-      "Articles, films, reports, interviews, and downloadable reference materials related to the project.",
-    href: maternalAdvocacyRoutes.media,
-  },
+  { label: "Overview", href: "#overview" },
+  { label: "Research Foundations", href: "#research-foundations" },
+  { label: "Madres de Plaza de Mayo", href: "#madres" },
+  { label: "Israeli Mothers", href: "#october7" },
+  { label: "Ukrainian Mothers", href: "#ukraine" },
+  { label: "Our Study", href: "#our-study" },
+  { label: "Findings", href: "#findings" },
+  { label: "Media", href: "#media" },
+  { label: "Who We Are", href: "#team" },
 ];
 
 /** Chrome (own navbar + footer) shown only on the Maternal Advocacy Project page. */
@@ -140,31 +60,31 @@ export const overview = {
       title: "Madres de Plaza de Mayo",
       blurb:
         "Mothers who transformed private grief into coordinated advocacy during Argentina's Proceso, demanding truth for disappeared children.",
-      href: maternalAdvocacyRoutes.madres,
+      href: "#madres",
     },
     {
       title: "Israeli mothers after October 7",
       blurb:
         "Mothers advocating after the October 7 attacks, including those whose family members were abducted, killed, or otherwise harmed.",
-      href: maternalAdvocacyRoutes.israel,
+      href: "#october7",
     },
     {
       title: "Ukrainian mothers",
       blurb:
         "Mothers confronting wartime child abduction, forced transfer, and family separation—and organizing for reunification and accountability.",
-      href: maternalAdvocacyRoutes.ukraine,
+      href: "#ukraine",
     },
     {
       title: "Mothers in our comparative study",
       blurb:
         "Mothers whose testimony forms the basis of our comparative linguistic analysis of advocacy and trauma.",
-      href: maternalAdvocacyRoutes.study,
+      href: "#our-study",
     },
     {
       title: "Cross-conflict maternal peace",
       blurb:
         "Palestinian and Israeli mothers organizing for dialogue, hostage return, and political resolution amid ongoing violence.",
-      href: `${maternalAdvocacyRoutes.israel}#block-mothers-call`,
+      href: "#block-mothers-call",
     },
   ],
   tags: [
@@ -1033,19 +953,3 @@ export const team = {
     },
   ] as TeamMember[],
 };
-
-export function getResearchGroupBySlug(slug: "madres" | "israel" | "ukraine"): ResearchGroup | undefined {
-  const idMap = { madres: "madres", israel: "october7", ukraine: "ukraine" } as const;
-  return researchGroups.find((g) => g.id === idMap[slug]);
-}
-
-export function getRegionPagerLinks(slug: "madres" | "israel" | "ukraine"): {
-  prev?: RegionPageLink;
-  next?: RegionPageLink;
-} {
-  const index = { madres: 0, israel: 1, ukraine: 2 }[slug];
-  return {
-    prev: index > 0 ? regionPages[index - 1] : undefined,
-    next: index < regionPages.length - 1 ? regionPages[index + 1] : undefined,
-  };
-}

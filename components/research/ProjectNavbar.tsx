@@ -1,19 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { maternalAdvocacyChrome, maternalAdvocacyNav, maternalAdvocacyRoutes } from "@/lib/research";
-
-function isNavActive(pathname: string, href: string): boolean {
-  if (href === maternalAdvocacyRoutes.hub) {
-    return pathname === maternalAdvocacyRoutes.hub;
-  }
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
+import { maternalAdvocacyChrome, maternalAdvocacyNav } from "@/lib/research";
 
 export function ProjectNavbar() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const toggleRef = useRef<HTMLButtonElement | null>(null);
@@ -62,20 +53,11 @@ export function ProjectNavbar() {
 
         <nav className="project-nav__links project-nav__links--desktop" aria-label="Project sections">
           <ul>
-            {maternalAdvocacyNav.map((item) => {
-              const active = isNavActive(pathname, item.href);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={active ? "project-nav__link--active" : undefined}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
+            {maternalAdvocacyNav.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -103,22 +85,17 @@ export function ProjectNavbar() {
       >
         <nav aria-label="Project sections mobile">
           <ul className="project-nav__mobile">
-            {maternalAdvocacyNav.map((item, i) => {
-              const active = isNavActive(pathname, item.href);
-              return (
-                <li key={item.href}>
-                  <Link
-                    ref={i === 0 ? firstLinkRef : undefined}
-                    href={item.href}
-                    className={active ? "project-nav__link--active" : undefined}
-                    aria-current={active ? "page" : undefined}
-                    onClick={closeMenu}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
+            {maternalAdvocacyNav.map((item, i) => (
+              <li key={item.href}>
+                <Link
+                  ref={i === 0 ? firstLinkRef : undefined}
+                  href={item.href}
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

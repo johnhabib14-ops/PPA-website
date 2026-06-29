@@ -1,6 +1,12 @@
 import Image from "next/image";
-import { slugify } from "@/lib/research-toc";
 import type { researchFoundations } from "@/lib/research";
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 type ResearchFoundationsContentProps = {
   foundations: typeof researchFoundations;
