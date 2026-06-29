@@ -3545,3 +3545,252 @@ a:hover {
 .project-footer__copy {
   white-space: nowrap;
 }
+
+/* —— Maternal Advocacy Project: multi-page IA —— */
+
+.project-nav__link--active,
+.project-nav__links a.project-nav__link--active,
+.project-nav__mobile a.project-nav__link--active {
+  background: rgba(244, 242, 236, 0.12);
+  color: #fff;
+}
+
+.region-page-layout {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 960px) {
+  .region-page-layout {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-2xl);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .region-page-layout .band {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.region-page-main {
+  min-width: 0;
+}
+
+.region-toc {
+  position: sticky;
+  top: calc(var(--space-lg) + 3.5rem);
+  align-self: start;
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+@media (max-width: 959.98px) {
+  .region-toc {
+    position: static;
+    margin: 0 var(--space-lg);
+  }
+}
+
+.region-toc__heading {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.region-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.region-toc__link {
+  display: block;
+  padding: var(--space-xs) 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  border-left: 2px solid transparent;
+  padding-left: var(--space-sm);
+}
+
+.region-toc__link:hover {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+}
+
+.region-pager {
+  display: grid;
+  gap: var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+}
+
+@media (min-width: 640px) {
+  .region-pager {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.region-pager__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.region-pager__link:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.region-pager__link--next {
+  text-align: right;
+}
+
+.region-pager__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.region-pager__title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.hub-support-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.hub-support-card__cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.research-advocate-table__expand {
+  margin-top: var(--space-md);
+}
+
+.research-advocate-table__expand .research-advocate-table-scroll {
+  margin-top: var(--space-md);
+}
+
+.research-bullet-block.research-collapsible summary {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+}
+
+.research-bullet-block__inner {
+  padding-top: var(--space-sm);
+}
+
+/* —— Maternal Advocacy Project: polish pass —— */
+
+.overview-grid__link {
+  display: flex;
+  gap: var(--space-md);
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.overview-grid__link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.project-subpage {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.project-subpage .band {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.project-breadcrumb {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-lg) 0;
+}
+
+.region-page-main .project-breadcrumb {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: var(--space-sm);
+}
+
+.project-subpage .project-breadcrumb {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.project-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.project-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-muted);
+}
+
+.project-breadcrumb__item + .project-breadcrumb__item::before {
+  content: "/";
+  color: var(--color-border-strong, var(--color-border));
+  font-weight: 400;
+}
+
+.project-breadcrumb__link {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-accent);
+}
+
+.project-breadcrumb__link:hover {
+  text-decoration: underline;
+}
+
+.project-breadcrumb__current {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
